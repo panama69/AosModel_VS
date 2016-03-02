@@ -263,7 +263,7 @@
           </tags>
         </object>
         <object technology="Web" type="Link">
-          <name>0 </name>
+          <name>Shopping Cart</name>
           <codeName>ShoppingCart</codeName>
           <image>iVBORw0KGgoAAAANSUhEUgAAACoAAAAuCAYAAABeUotNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAAE1SURBVFhH7ZbbDYMwDEW7EgOwAAuwBguwAHOwAAuwAAuwAHNQ3cr56CMovrYitfWRLKEQJ4fESXs7v4QQ9SZEvQlRb0LUm98SbZrmKdq2lTf1oEQRx3HI2zqot34YhofosizSUge16DzPb6tria7rZORr1KL7vn+ckI1pmmTka9SiAIcJk1jqFCuJMdZ1lZZrKFFrneIDka+5PSjRVKfjOEqLjpSPDy6FEk11WnoQXmF2hBIFljpFnjaXFk2rgm3UgMODvL7vpaUMWpSpM4DrCHml11KCFrXep8jXQIuCVKfaYP7UmETZOmUwibJ1ymAStdSpFpMoYOtUi1m0FmbRbdseP6UIPOco7ZfDLIqJ03biOUdpvxyuNXolUNovx/9sfS1C1JsQ9SZEvQlRb0LUmxD15Tzv4sV8gwEOkw4AAAAASUVORK5CYII=</image>
           <identification>
@@ -280,7 +280,7 @@
           </tags>
         </object>
         <object technology="Web" type="WebElement">
-          <name>1</name>
+          <name>Cart Count</name>
           <codeName>CartCount</codeName>
           <identification>
             <properties>
@@ -750,6 +750,20 @@ These are colors that were available across all products which means some produc
           </property>
         </properties>
       </identification>
+    </object>
+    <object technology="Web" type="Button">
+      <name>BUY NOW</name>
+      <codeName>BuyNow</codeName>
+      <identification>
+        <properties>
+          <property name="ButtonType" type="string">submit</property>
+          <property name="TagName" type="string">BUTTON</property>
+          <property name="Name" type="string">BUY NOW</property>
+        </properties>
+      </identification>
+      <tags>
+        <tag>Feature Product Header</tag>
+      </tags>
     </object>
   </objects>
 </applicationModel>

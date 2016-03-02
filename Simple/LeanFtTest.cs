@@ -39,8 +39,10 @@ namespace Simple
 
             aosModel.PlusQuantity.Click();
             aosModel.PlusQuantity.Click();
-            Reporter.ReportEvent(aosModel.OrderQuantity.DisplayName,"");
+            Reporter.ReportEvent(aosModel.OrderQuantity.Value,"");
             aosModel.AddToCart.Click();
+            Reporter.ReportEvent("Cart Count: "+aosModel.Header.CartCount.InnerText,"");
+            aosModel.Header.ShoppingCart.Click();
 
         }
 

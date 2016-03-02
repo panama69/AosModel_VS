@@ -31,6 +31,7 @@ namespace AosModel
 			MinusQuantity = new MinusQuantityNode(contextTestObject, this);
 			PlusQuantity = new PlusQuantityNode(contextTestObject, this);
 			OrderQuantity = new OrderQuantityNode(contextTestObject, this);
+			BuyNow = new BuyNowNode(contextTestObject, this);
 			RebuildDescriptions();
 			
 		}
@@ -48,6 +49,7 @@ namespace AosModel
 		public MinusQuantityNode MinusQuantity { get; private set; }
 		public PlusQuantityNode PlusQuantity { get; private set; }
 		public OrderQuantityNode OrderQuantity { get; private set; }
+		public BuyNowNode BuyNow { get; private set; }
 	
 		#endregion
 	
@@ -760,7 +762,7 @@ namespace AosModel
 			
 				public ShoppingCartNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					DisplayName = @"0 ";
+					DisplayName = @"Shopping Cart";
 				}
 			
 				#endregion
@@ -786,7 +788,7 @@ namespace AosModel
 			
 				public CartCountNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					DisplayName = @"1";
+					DisplayName = @"Cart Count";
 				}
 			
 				#endregion
@@ -1751,6 +1753,33 @@ namespace AosModel
 				return new HP.LFT.SDK.Web.EditFieldDescription
 				{
 					Attributes = { {@"ng-model", @"numAttr"} }
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class BuyNowNode : ButtonNodeBase
+		{
+			#region Constructors
+		
+			public BuyNowNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"BUY NOW";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.ButtonDescription
+				{
+					ButtonType = @"submit",
+					TagName = @"BUTTON",
+					Name = @"BUY NOW"
 				};
 			}
 		
