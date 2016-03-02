@@ -29,14 +29,19 @@ namespace Simple
             IBrowser browser = BrowserFactory.Launch(BrowserType.Chrome);
             browser.Navigate("http://www.advantageonlineshopping.com/");
             AosModel.AosModel aosModel = new AosModel.AosModel(browser);
-            aosModel.AdvantageShoppingPage.Tablets.Click();
+            aosModel.AdvantageShoppingPage.Headphones.Click();
 
-            
-            aosModel.Color.Click();
-            aosModel.ProductsColors.Black.Click();
-            aosModel.ProductsColors.Blue.Click();
-            Thread.Sleep(2000);
-            aosModel.ProductsColors.Blue.Click();
+            browser.Describe<IWebElement>(new WebElementDescription
+            {
+                TagName = @"A",
+                InnerText = @"Beats Studio 2 Over-Ear Matte Black Headphones"
+            }).Click();
+
+            aosModel.PlusQuantity.Click();
+            aosModel.PlusQuantity.Click();
+            Reporter.ReportEvent(aosModel.OrderQuantity.DisplayName,"");
+            aosModel.AddToCart.Click();
+
         }
 
         [TearDown]

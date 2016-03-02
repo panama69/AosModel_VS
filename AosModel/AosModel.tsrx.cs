@@ -24,17 +24,9 @@ namespace AosModel
 			Name = @"AosModel";
 			AdvantageShoppingPage = new AdvantageShoppingPageNode(contextTestObject, this);
 			Header = new HeaderNode(contextTestObject, this);
+			FilterBy = new FilterByNode(contextTestObject, this);
 			ProductsColors = new ProductsColorsNode(contextTestObject, this);
-			Price = new PriceNode(contextTestObject, this);
-			Compatibility = new CompatibilityNode(contextTestObject, this);
-			WirelessTechnology = new WirelessTechnologyNode(contextTestObject, this);
-			Color = new ColorNode(contextTestObject, this);
-			OperatingSystem = new OperatingSystemNode(contextTestObject, this);
-			Graphics = new GraphicsNode(contextTestObject, this);
-			Memory = new MemoryNode(contextTestObject, this);
-			Display = new DisplayNode(contextTestObject, this);
-			Processor = new ProcessorNode(contextTestObject, this);
-			CUSTOMIZATIONWebElement = new CUSTOMIZATIONWebElementNode(contextTestObject, this);
+			ProductColor = new ProductColorNode(contextTestObject, this);
 			AddToCart = new AddToCartNode(contextTestObject, this);
 			MinusQuantity = new MinusQuantityNode(contextTestObject, this);
 			PlusQuantity = new PlusQuantityNode(contextTestObject, this);
@@ -49,17 +41,9 @@ namespace AosModel
 	
 		public AdvantageShoppingPageNode AdvantageShoppingPage { get; private set; }
 		public HeaderNode Header { get; private set; }
+		public FilterByNode FilterBy { get; private set; }
 		public ProductsColorsNode ProductsColors { get; private set; }
-		public PriceNode Price { get; private set; }
-		public CompatibilityNode Compatibility { get; private set; }
-		public WirelessTechnologyNode WirelessTechnology { get; private set; }
-		public ColorNode Color { get; private set; }
-		public OperatingSystemNode OperatingSystem { get; private set; }
-		public GraphicsNode Graphics { get; private set; }
-		public MemoryNode Memory { get; private set; }
-		public DisplayNode Display { get; private set; }
-		public ProcessorNode Processor { get; private set; }
-		public CUSTOMIZATIONWebElementNode CUSTOMIZATIONWebElement { get; private set; }
+		public ProductColorNode ProductColor { get; private set; }
 		public AddToCartNode AddToCart { get; private set; }
 		public MinusQuantityNode MinusQuantity { get; private set; }
 		public PlusQuantityNode PlusQuantity { get; private set; }
@@ -850,6 +834,311 @@ namespace AosModel
 			#endregion
 		}
 
+		public sealed class FilterByNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public FilterByNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				Memory = new MemoryNode(this, applicationModel);
+				Graphics = new GraphicsNode(this, applicationModel);
+				OperatingSystem = new OperatingSystemNode(this, applicationModel);
+				WirelessTechnology = new WirelessTechnologyNode(this, applicationModel);
+				Compatibility = new CompatibilityNode(this, applicationModel);
+				Price = new PriceNode(this, applicationModel);
+				Customization = new CustomizationNode(this, applicationModel);
+				Display = new DisplayNode(this, applicationModel);
+				Processor = new ProcessorNode(this, applicationModel);
+				Color = new ColorNode(this, applicationModel);
+				DisplayName = @"FILTER BY";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					ClassName = @"cell categoryLeft",
+					InnerText = As.RegExp(@".*FILTER BY:.*")
+				};
+			}
+		
+			#endregion
+		
+			#region Test Objects
+		
+			public MemoryNode Memory { get; private set; }
+			public GraphicsNode Graphics { get; private set; }
+			public OperatingSystemNode OperatingSystem { get; private set; }
+			public WirelessTechnologyNode WirelessTechnology { get; private set; }
+			public CompatibilityNode Compatibility { get; private set; }
+			public PriceNode Price { get; private set; }
+			public CustomizationNode Customization { get; private set; }
+			public DisplayNode Display { get; private set; }
+			public ProcessorNode Processor { get; private set; }
+			public ColorNode Color { get; private set; }
+		
+			#endregion
+		
+			#region Inner Classes
+		
+			public sealed class MemoryNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public MemoryNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"MEMORY ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"MEMORY "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class GraphicsNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public GraphicsNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"GRAPHICS ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"GRAPHICS "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class OperatingSystemNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public OperatingSystemNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"OPERATING SYSTEM ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"OPERATING SYSTEM "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class WirelessTechnologyNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public WirelessTechnologyNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"WIRELESS TECHNOLOGY ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"WIRELESS TECHNOLOGY "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class CompatibilityNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public CompatibilityNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"COMPATIBILITY ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"COMPATIBILITY "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class PriceNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public PriceNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"PRICE ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"PRICE "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class CustomizationNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public CustomizationNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"CUSTOMIZATION ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"CUSTOMIZATION "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class DisplayNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public DisplayNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"DISPLAY ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"DISPLAY "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class ProcessorNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public ProcessorNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"PROCESSOR ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"PROCESSOR "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class ColorNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public ColorNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"COLOR ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"COLOR ",
+						Attributes = { {@"id", @"accordionColor"} }
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			#endregion
+		}
+
 		public sealed class ProductsColorsNode : WebElementNodeBase
 		{
 			#region Constructors
@@ -862,6 +1151,8 @@ namespace AosModel
 				CobaltBlue = new CobaltBlueNode(this, applicationModel);
 				DeepSkyBlue = new DeepSkyBlueNode(this, applicationModel);
 				Gray = new GrayNode(this, applicationModel);
+				Khaki = new KhakiNode(this, applicationModel);
+				Pink = new PinkNode(this, applicationModel);
 				DisplayName = @"Products Colors";
 			}
 		
@@ -888,6 +1179,8 @@ namespace AosModel
 			public CobaltBlueNode CobaltBlue { get; private set; }
 			public DeepSkyBlueNode DeepSkyBlue { get; private set; }
 			public GrayNode Gray { get; private set; }
+			public KhakiNode Khaki { get; private set; }
+			public PinkNode Pink { get; private set; }
 		
 			#endregion
 		
@@ -1049,16 +1342,76 @@ namespace AosModel
 			
 			}
 
+			public sealed class KhakiNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public KhakiNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"KHAKI";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Title = @"KHAKI",
+						ClassName = As.RegExp(@"productColor.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class PinkNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public PinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"PINK";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Title = @"PINK",
+						ClassName = As.RegExp(@"productColor.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
 			#endregion
 		}
 
-		public sealed class PriceNode : WebElementNodeBase
+		public sealed class ProductColorNode : WebElementNodeBase
 		{
 			#region Constructors
 		
-			public PriceNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public ProductColorNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
-				DisplayName = @"PRICE ";
+				Black = new BlackNode(this, applicationModel);
+				BlizzardWhite = new BlizzardWhiteNode(this, applicationModel);
+				CobaltBlue = new CobaltBlueNode(this, applicationModel);
+				PeachyPink = new PeachyPinkNode(this, applicationModel);
+				Silver = new SilverNode(this, applicationModel);
+				SunsetRed = new SunsetRedNode(this, applicationModel);
+				Pink = new PinkNode(this, applicationModel);
+				Khaki = new KhakiNode(this, applicationModel);
+				DisplayName = @"Color: ";
 			}
 		
 			#endregion
@@ -1069,238 +1422,240 @@ namespace AosModel
 			{
 				return new HP.LFT.SDK.Web.WebElementDescription
 				{
-					InnerText = @"PRICE "
+					ClassName = @"colors ng-scope",
+					InnerText = @"Color: "
 				};
 			}
 		
 			#endregion
 		
-		}
-
-		public sealed class CompatibilityNode : WebElementNodeBase
-		{
-			#region Constructors
+			#region Test Objects
 		
-			public CompatibilityNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-			{
-				DisplayName = @"COMPATIBILITY ";
-			}
+			public BlackNode Black { get; private set; }
+			public BlizzardWhiteNode BlizzardWhite { get; private set; }
+			public CobaltBlueNode CobaltBlue { get; private set; }
+			public PeachyPinkNode PeachyPink { get; private set; }
+			public SilverNode Silver { get; private set; }
+			public SunsetRedNode SunsetRed { get; private set; }
+			public PinkNode Pink { get; private set; }
+			public KhakiNode Khaki { get; private set; }
 		
 			#endregion
 		
-			#region Description
+			#region Inner Classes
 		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			public sealed class BlackNode : WebElementNodeBase
 			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public BlackNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"COMPATIBILITY "
-				};
-			}
-		
-			#endregion
-		
-		}
-
-		public sealed class WirelessTechnologyNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public WirelessTechnologyNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-			{
-				DisplayName = @"WIRELESS TECHNOLOGY ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+					DisplayName = @"BLACK";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
 				{
-					InnerText = @"WIRELESS TECHNOLOGY "
-				};
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"BLACK"
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class ColorNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public ColorNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class BlizzardWhiteNode : WebElementNodeBase
 			{
-				DisplayName = @"COLOR ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public BlizzardWhiteNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"COLOR ",
-					Attributes = { {@"id", @"accordionColor"} }
-				};
+					DisplayName = @"BLIZZARD WHITE";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"BLIZZARD WHITE"
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class OperatingSystemNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public OperatingSystemNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class CobaltBlueNode : WebElementNodeBase
 			{
-				DisplayName = @"OPERATING SYSTEM ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public CobaltBlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"OPERATING SYSTEM "
-				};
+					DisplayName = @"COBALT BLUE";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"COBALT BLUE"
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class GraphicsNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public GraphicsNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class PeachyPinkNode : WebElementNodeBase
 			{
-				DisplayName = @"GRAPHICS ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public PeachyPinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"GRAPHICS "
-				};
+					DisplayName = @"PEACHY PINK";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"PEACHY PINK"
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class MemoryNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public MemoryNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class SilverNode : WebElementNodeBase
 			{
-				DisplayName = @"MEMORY ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public SilverNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"MEMORY "
-				};
+					DisplayName = @"SILVER";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"SILVER"
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class DisplayNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public DisplayNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class SunsetRedNode : WebElementNodeBase
 			{
-				DisplayName = @"DISPLAY ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public SunsetRedNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"DISPLAY "
-				};
+					DisplayName = @"SUNSET RED";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"SUNSET RED",
+						Index = 7
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class ProcessorNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public ProcessorNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class PinkNode : WebElementNodeBase
 			{
-				DisplayName = @"PROCESSOR ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public PinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"PROCESSOR "
-				};
+					DisplayName = @"PINK";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"PINK",
+						Index = 7
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class CUSTOMIZATIONWebElementNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public CUSTOMIZATIONWebElementNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class KhakiNode : WebElementNodeBase
 			{
-				DisplayName = @"CUSTOMIZATION ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				#region Constructors
+			
+				public KhakiNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					InnerText = @"CUSTOMIZATION "
-				};
+					DisplayName = @"KHAKI";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"KHAKI",
+						Index = 7
+					};
+				}
+			
+				#endregion
+			
 			}
-		
+
 			#endregion
-		
 		}
 
 		public sealed class AddToCartNode : ButtonNodeBase
@@ -1345,7 +1700,7 @@ namespace AosModel
 			{
 				return new HP.LFT.SDK.Web.WebElementDescription
 				{
-					ClassName = @"minus"
+					ClassName = As.RegExp(@"minus.*")
 				};
 			}
 		
@@ -1370,7 +1725,7 @@ namespace AosModel
 			{
 				return new HP.LFT.SDK.Web.WebElementDescription
 				{
-					ClassName = @"plus"
+					ClassName = As.RegExp(@"plus.*")
 				};
 			}
 		

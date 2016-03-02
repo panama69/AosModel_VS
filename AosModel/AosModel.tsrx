@@ -313,8 +313,149 @@
       </children>
     </object>
     <object technology="Web" type="WebElement">
+      <name>FILTER BY</name>
+      <codeName>FilterBy</codeName>
+      <identification>
+        <properties>
+          <property name="ClassName" type="string">cell categoryLeft</property>
+          <property name="InnerText" type="string" isRegExp="true">.*FILTER BY:.*</property>
+        </properties>
+      </identification>
+      <tags>
+        <tag>SearchFilters</tag>
+      </tags>
+      <children>
+        <object technology="Web" type="WebElement">
+          <name>MEMORY </name>
+          <codeName>Memory</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">MEMORY </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>GRAPHICS </name>
+          <codeName>Graphics</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">GRAPHICS </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>OPERATING SYSTEM </name>
+          <codeName>OperatingSystem</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">OPERATING SYSTEM </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>WIRELESS TECHNOLOGY </name>
+          <codeName>WirelessTechnology</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">WIRELESS TECHNOLOGY </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>COMPATIBILITY </name>
+          <codeName>Compatibility</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">COMPATIBILITY </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>PRICE </name>
+          <codeName>Price</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">PRICE </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>CUSTOMIZATION </name>
+          <codeName>Customization</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">CUSTOMIZATION </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>DISPLAY </name>
+          <codeName>Display</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">DISPLAY </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>PROCESSOR </name>
+          <codeName>Processor</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">PROCESSOR </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>COLOR </name>
+          <codeName>Color</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">COLOR </property>
+              <property name="Attributes" type="dictionary">
+                <property name="id" type="string">accordionColor</property>
+              </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+      </children>
+    </object>
+    <object technology="Web" type="WebElement">
       <name>Products Colors</name>
       <codeName>ProductsColors</codeName>
+      <description>Available colors from the Filter By-&gt;Colors section.
+These are colors that were available across all products which means some products are not available in some of the colors that are in the AOM</description>
       <identification>
         <properties>
           <property name="ClassName" type="string">option</property>
@@ -329,7 +470,7 @@
           <name>BLACK</name>
           <codeName>Black</codeName>
           <description>Color blue option for product color selection</description>
-          <image>iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAACMSURBVDhPpZKLDYAgEEPZQDaQTWRD2IiRGKFSLhgVUJRLGmJ7T74KE3WBYwS8B6wFtE5hSjnymz7zcx1wCIAxAvTEnH2lkiVGq7mn8gPFpbzNeBf7ySnn6nBEmdu2OhhR5sqpfpVwjWBYy9IwB5S5qT1PnTbva13r8Ensz/fMl/L7hckgxtsKmBcQAHbR6iWjzB7NLQAAAABJRU5ErkJggg==</image>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAACQSURBVDhPpZKBDcMgDAS9AWwAm8CGsBEjMcK3b4WqiYzcCkufCP9fIIDgoG7wnBO9d9RaEWOEiOibY/bpf9cHHmMg56zATvSZW6UwG1Z4p/UB4VK8GZ9inpy01syAJ+VKKabpSbm1q//q4mzzJ4UQbMORckf/fLTbPK+UkhnYiXk956Mbps93seGtgP4CAeAFf6p4GG2nsVMAAAAASUVORK5CYII=</image>
           <identification>
             <properties>
               <property name="Title" type="string">BLACK</property>
@@ -357,7 +498,7 @@
           <name>BLUE</name>
           <codeName>Blue</codeName>
           <description>Color blue option for product color selection</description>
-          <image>iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAACQSURBVDhPpZKBDcMgDAS9AWwAm8CGsBEjMcK3b4WqiYzcCkufCP9fIIDgoG7wnBO9d9RaEWOEiOibY/bpf9cHHmMg56zATvSZW6UwG1Z4p/UB4VK8GZ9inpy01syAJ+VKKabpSbm1q//q4mzzJ4UQbMORckf/fLTbPK+UkhnYiXk956Mbps93seGtgP4CAeAFf6p4GG2nsVMAAAAASUVORK5CYII=</image>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAACMSURBVDhPpZKLDYAgEEPZQDaQTWRD2IiRGKFSLhgVUJRLGmJ7T74KE3WBYwS8B6wFtE5hSjnymz7zcx1wCIAxAvTEnH2lkiVGq7mn8gPFpbzNeBf7ySnn6nBEmdu2OhhR5sqpfpVwjWBYy9IwB5S5qT1PnTbva13r8Ensz/fMl/L7hckgxtsKmBcQAHbR6iWjzB7NLQAAAABJRU5ErkJggg==</image>
           <identification>
             <properties>
               <property name="Title" type="string">BLUE</property>
@@ -412,131 +553,161 @@
             <tag>Colors</tag>
           </tags>
         </object>
+        <object technology="Web" type="WebElement">
+          <name>KHAKI</name>
+          <codeName>Khaki</codeName>
+          <description>Color option for product color selection</description>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAACTSURBVDhPpZLRDQMhDEMzOn/wBxvANrAFY/Dp1pGo2ioorYjkOxH7HRwguKgPeK2FMQZaa0gpIYSgb47Zp/9eL3jOiVKKAifRZ26XwmxY4ZP2B4RL8Wb8FvPkpPduBjyRk1qraXoiJ3tX/xU5sYxfJTFG0/BE7u6fr3ab55VzNgMnMa/nfHXD9PksNrwV0N8gADwAFld9V6lNN6kAAAAASUVORK5CYII=</image>
+          <identification>
+            <properties>
+              <property name="Title" type="string">KHAKI</property>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>PINK</name>
+          <codeName>Pink</codeName>
+          <description>Color option for product color selection</description>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAACTSURBVDhPpZLRDQMhDEMzOn/wBxvANrAFY/Dp1pGo2ioorYjkOxH7HRwguKgPeK2FMQZaa0gpIYSgb47Zp/9eL3jOiVKKAifRZ26XwmxY4ZP2B4RL8Wb8FvPkpPduBjyRk1qraXoiJ3tX/xU5sYxfJTFG0/BE7u6fr3ab55VzNgMnMa/nfHXD9PksNrwV0N8gADwAFld9V6lNN6kAAAAASUVORK5CYII=</image>
+          <identification>
+            <properties>
+              <property name="Title" type="string">PINK</property>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
       </children>
     </object>
     <object technology="Web" type="WebElement">
-      <name>PRICE </name>
-      <codeName>Price</codeName>
+      <name>Color: </name>
+      <codeName>ProductColor</codeName>
+      <description>Available colors from the product
+These are colors that were available across all products which means some products are not available in some of the colors that are in the AOM</description>
       <identification>
         <properties>
-          <property name="InnerText" type="string">PRICE </property>
+          <property name="ClassName" type="string">colors ng-scope</property>
+          <property name="InnerText" type="string">Color: </property>
         </properties>
       </identification>
       <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>COMPATIBILITY </name>
-      <codeName>Compatibility</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">COMPATIBILITY </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>WIRELESS TECHNOLOGY </name>
-      <codeName>WirelessTechnology</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">WIRELESS TECHNOLOGY </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>COLOR </name>
-      <codeName>Color</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">COLOR </property>
-          <property name="Attributes" type="dictionary">
-            <property name="id" type="string">accordionColor</property>
-          </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
         <tag>Colors</tag>
       </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>OPERATING SYSTEM </name>
-      <codeName>OperatingSystem</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">OPERATING SYSTEM </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>GRAPHICS </name>
-      <codeName>Graphics</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">GRAPHICS </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>MEMORY </name>
-      <codeName>Memory</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">MEMORY </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>DISPLAY </name>
-      <codeName>Display</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">DISPLAY </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>PROCESSOR </name>
-      <codeName>Processor</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">PROCESSOR </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
-    </object>
-    <object technology="Web" type="WebElement">
-      <name>CUSTOMIZATION </name>
-      <codeName>CUSTOMIZATIONWebElement</codeName>
-      <identification>
-        <properties>
-          <property name="InnerText" type="string">CUSTOMIZATION </property>
-        </properties>
-      </identification>
-      <tags>
-        <tag>SearchFilters</tag>
-      </tags>
+      <children>
+        <object technology="Web" type="WebElement">
+          <name>BLACK</name>
+          <codeName>Black</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">BLACK</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>BLIZZARD WHITE</name>
+          <codeName>BlizzardWhite</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">BLIZZARD WHITE</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>COBALT BLUE</name>
+          <codeName>CobaltBlue</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">COBALT BLUE</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>PEACHY PINK</name>
+          <codeName>PeachyPink</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">PEACHY PINK</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>SILVER</name>
+          <codeName>Silver</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">SILVER</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>SUNSET RED</name>
+          <codeName>SunsetRed</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">SUNSET RED</property>
+            </properties>
+            <index>7</index>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>PINK</name>
+          <codeName>Pink</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">PINK</property>
+            </properties>
+            <index>7</index>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>KHAKI</name>
+          <codeName>Khaki</codeName>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string" isRegExp="true">productColor.*</property>
+              <property name="Title" type="string">KHAKI</property>
+            </properties>
+            <index>7</index>
+          </identification>
+          <tags>
+            <tag>Colors</tag>
+          </tags>
+        </object>
+      </children>
     </object>
     <object technology="Web" type="Button">
       <name> ADD TO CART </name>
@@ -554,7 +725,7 @@
       <image>iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAAAySURBVEhLY/hPYzBqAUEwagFBMGoBQTDwFjg5OeHFhMBoHBAEoxYQBKMWEAQ0tuD/fwDb4yaBIWnqAAAAAABJRU5ErkJggg==</image>
       <identification>
         <properties>
-          <property name="ClassName" type="string">minus</property>
+          <property name="ClassName" type="string" isRegExp="true">minus.*</property>
         </properties>
       </identification>
     </object>
@@ -565,7 +736,7 @@
       <image>iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnMAABJzAYwiuQcAAAA7SURBVEhLY/hPYzBqAUEwagFBQLIFTk5OUBZxYNQCgoCgBSADCWF8YDQOCILBZwGpYNQCgmCoW/D/PwDKOxKSGFaM8gAAAABJRU5ErkJggg==</image>
       <identification>
         <properties>
-          <property name="ClassName" type="string">plus</property>
+          <property name="ClassName" type="string" isRegExp="true">plus.*</property>
         </properties>
       </identification>
     </object>
