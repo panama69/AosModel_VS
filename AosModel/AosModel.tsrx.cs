@@ -23,11 +23,8 @@ namespace AosModel
 		{
 			Name = @"AosModel";
 			AdvantageShoppingPage = new AdvantageShoppingPageNode(contextTestObject, this);
-			MyAccountSignOut = new MyAccountSignOutNode(contextTestObject, this);
-			Search = new SearchNode(contextTestObject, this);
-			ShoppingCart = new ShoppingCartNode(contextTestObject, this);
-			CartCount = new CartCountNode(contextTestObject, this);
-			AdvantageLogo = new AdvantageLogoNode(contextTestObject, this);
+			Header = new HeaderNode(contextTestObject, this);
+			ProductsColors = new ProductsColorsNode(contextTestObject, this);
 			Price = new PriceNode(contextTestObject, this);
 			Compatibility = new CompatibilityNode(contextTestObject, this);
 			WirelessTechnology = new WirelessTechnologyNode(contextTestObject, this);
@@ -51,11 +48,8 @@ namespace AosModel
 		#region Test Objects
 	
 		public AdvantageShoppingPageNode AdvantageShoppingPage { get; private set; }
-		public MyAccountSignOutNode MyAccountSignOut { get; private set; }
-		public SearchNode Search { get; private set; }
-		public ShoppingCartNode ShoppingCart { get; private set; }
-		public CartCountNode CartCount { get; private set; }
-		public AdvantageLogoNode AdvantageLogo { get; private set; }
+		public HeaderNode Header { get; private set; }
+		public ProductsColorsNode ProductsColors { get; private set; }
 		public PriceNode Price { get; private set; }
 		public CompatibilityNode Compatibility { get; private set; }
 		public WirelessTechnologyNode WirelessTechnology { get; private set; }
@@ -657,13 +651,19 @@ namespace AosModel
 			#endregion
 		}
 
-		public sealed class MyAccountSignOutNode : WebElementNodeBase
+		public sealed class HeaderNode : WebElementNodeBase
 		{
 			#region Constructors
 		
-			public MyAccountSignOutNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public HeaderNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
-				DisplayName = @"My account Sign out ";
+				AdvantageLogo = new AdvantageLogoNode(this, applicationModel);
+				MyAccountSignOut = new MyAccountSignOutNode(this, applicationModel);
+				Search = new SearchNode(this, applicationModel);
+				ShoppingCart = new ShoppingCartNode(this, applicationModel);
+				CartCount = new CartCountNode(this, applicationModel);
+				Support = new SupportNode(this, applicationModel);
+				DisplayName = @"HEADER";
 			}
 		
 			#endregion
@@ -674,22 +674,195 @@ namespace AosModel
 			{
 				return new HP.LFT.SDK.Web.WebElementDescription
 				{
-					TagName = @"A",
-					InnerText = @"My account Sign out "
+					TagName = @"HEADER"
 				};
 			}
 		
 			#endregion
 		
+			#region Test Objects
+		
+			public AdvantageLogoNode AdvantageLogo { get; private set; }
+			public MyAccountSignOutNode MyAccountSignOut { get; private set; }
+			public SearchNode Search { get; private set; }
+			public ShoppingCartNode ShoppingCart { get; private set; }
+			public CartCountNode CartCount { get; private set; }
+			public SupportNode Support { get; private set; }
+		
+			#endregion
+		
+			#region Inner Classes
+		
+			public sealed class AdvantageLogoNode : LinkNodeBase
+			{
+				#region Constructors
+			
+				public AdvantageLogoNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"dvantage ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.LinkDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.LinkDescription
+					{
+						TagName = @"A",
+						InnerText = @"dvantage "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class MyAccountSignOutNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public MyAccountSignOutNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"My account Sign out ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						TagName = @"A",
+						InnerText = @"My account Sign out "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class SearchNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public SearchNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"WebElement";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Id = @"search"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class ShoppingCartNode : LinkNodeBase
+			{
+				#region Constructors
+			
+				public ShoppingCartNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"0 ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.LinkDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.LinkDescription
+					{
+						TagName = @"A",
+						Attributes = { {@"class", @"img"} , {@"href", @"#/shoppingCart"} }
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class CartCountNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public CartCountNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"1";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Attributes = { {@"class", @"cart ng-binding"} },
+						Index = 1
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class SupportNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public SupportNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"SUPPORT";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Attributes = { {@"href", @"#/support"} }
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			#endregion
 		}
 
-		public sealed class SearchNode : WebElementNodeBase
+		public sealed class ProductsColorsNode : WebElementNodeBase
 		{
 			#region Constructors
 		
-			public SearchNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public ProductsColorsNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
-				DisplayName = @"WebElement";
+				Black = new BlackNode(this, applicationModel);
+				BlizardWhite = new BlizardWhiteNode(this, applicationModel);
+				Blue = new BlueNode(this, applicationModel);
+				CobaltBlue = new CobaltBlueNode(this, applicationModel);
+				DeepSkyBlue = new DeepSkyBlueNode(this, applicationModel);
+				Gray = new GrayNode(this, applicationModel);
+				DisplayName = @"Products Colors";
 			}
 		
 			#endregion
@@ -700,90 +873,183 @@ namespace AosModel
 			{
 				return new HP.LFT.SDK.Web.WebElementDescription
 				{
-					Id = @"search"
+					ClassName = @"option",
+					InnerHTML = As.RegExp(@".*productsColors.*")
 				};
 			}
 		
 			#endregion
 		
-		}
-
-		public sealed class ShoppingCartNode : LinkNodeBase
-		{
-			#region Constructors
+			#region Test Objects
 		
-			public ShoppingCartNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-			{
-				DisplayName = @"0 ";
-			}
+			public BlackNode Black { get; private set; }
+			public BlizardWhiteNode BlizardWhite { get; private set; }
+			public BlueNode Blue { get; private set; }
+			public CobaltBlueNode CobaltBlue { get; private set; }
+			public DeepSkyBlueNode DeepSkyBlue { get; private set; }
+			public GrayNode Gray { get; private set; }
 		
 			#endregion
 		
-			#region Description
+			#region Inner Classes
 		
-			protected override HP.LFT.SDK.Web.LinkDescription CreateDescription()
+			public sealed class BlackNode : WebElementNodeBase
 			{
-				return new HP.LFT.SDK.Web.LinkDescription
+				#region Constructors
+			
+				public BlackNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					TagName = @"A",
-					Attributes = { {@"class", @"img"} , {@"href", @"#/shoppingCart"} }
-				};
-			}
-		
-			#endregion
-		
-		}
-
-		public sealed class CartCountNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public CartCountNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-			{
-				DisplayName = @"1";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+					DisplayName = @"BLACK";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
 				{
-					Attributes = { {@"class", @"cart ng-binding"} },
-					Index = 1
-				};
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Title = @"BLACK",
+						ClassName = As.RegExp(@"productColor.*")
+					};
+				}
+			
+				#endregion
+			
 			}
-		
-			#endregion
-		
-		}
 
-		public sealed class AdvantageLogoNode : LinkNodeBase
-		{
-			#region Constructors
-		
-			public AdvantageLogoNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public sealed class BlizardWhiteNode : WebElementNodeBase
 			{
-				DisplayName = @"dvantage ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.LinkDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.LinkDescription
+				#region Constructors
+			
+				public BlizardWhiteNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					TagName = @"A",
-					InnerText = @"dvantage "
-				};
+					DisplayName = @"BLIZZARD WHITE";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = @"productColor.*",
+						Title = @"BLIZZARD WHITE"
+					};
+				}
+			
+				#endregion
+			
 			}
-		
+
+			public sealed class BlueNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public BlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"BLUE";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Title = @"BLUE",
+						ClassName = As.RegExp(@"productColor.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class CobaltBlueNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public CobaltBlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"COBALT BLUE";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"productColor.*"),
+						Title = @"COBALT BLUE"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class DeepSkyBlueNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public DeepSkyBlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"DEEPSKYBLUE";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Title = @"DEEPSKYBLUE",
+						ClassName = As.RegExp(@"productColor.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class GrayNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public GrayNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"GRAY";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						Title = @"GRAY",
+						ClassName = As.RegExp(@"productColor.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
 			#endregion
-		
 		}
 
 		public sealed class PriceNode : WebElementNodeBase

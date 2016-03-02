@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using NUnit.Framework;
 using HP.LFT.SDK;
 using HP.LFT.Verifications;
@@ -28,15 +29,14 @@ namespace Simple
             IBrowser browser = BrowserFactory.Launch(BrowserType.Chrome);
             browser.Navigate("http://www.advantageonlineshopping.com/");
             AosModel.AosModel aosModel = new AosModel.AosModel(browser);
-            aosModel.AdvantageShoppingPage.Laptops.Click();
-            browser.Describe<IWebElement>(new WebElementDescription
-            {
-                TagName = @"A",
-                InnerText = @"HP Pavilion 15z Touch Laptop"
-            }).Click();
-            aosModel.PlusQuantity.Click();
-            aosModel.PlusQuantity.DoubleClick();
+            aosModel.AdvantageShoppingPage.Tablets.Click();
 
+            
+            aosModel.Color.Click();
+            aosModel.ProductsColors.Black.Click();
+            aosModel.ProductsColors.Blue.Click();
+            Thread.Sleep(2000);
+            aosModel.ProductsColors.Blue.Click();
         }
 
         [TearDown]
