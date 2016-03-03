@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AosModel", "AosModel\AosModel.csproj", "{37F2A1DC-5379-4CF3-9D96-2277D86E82BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantageShoppingModels", "AdvantageShoppingModels\AdvantageShoppingModels.csproj", "{37F2A1DC-5379-4CF3-9D96-2277D86E82BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Simple\Simple.csproj", "{43CF575D-6BCC-4B9E-B5AF-F9A19F69E56D}"
 EndProject

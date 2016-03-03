@@ -4,7 +4,7 @@ using NUnit.Framework;
 using HP.LFT.SDK;
 using HP.LFT.Verifications;
 using HP.LFT.SDK.Web;
-using AosModel;
+using AdvantageShoppingModels;
 
 namespace Simple
 {
@@ -28,7 +28,7 @@ namespace Simple
         {
             IBrowser browser = BrowserFactory.Launch(BrowserType.Chrome);
             browser.Navigate("http://www.advantageonlineshopping.com/");
-            AosModel.AosModel aosModel = new AosModel.AosModel(browser);
+            AdvantageShoppingModels.AdvantageShoppingModel aosModel = new AdvantageShoppingModels.AdvantageShoppingModel(browser);
             aosModel.AdvantageShoppingPage.Headphones.Click();
 
             browser.Describe<IWebElement>(new WebElementDescription

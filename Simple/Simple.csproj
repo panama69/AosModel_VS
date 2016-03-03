@@ -82,13 +82,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AosModel\AosModel.csproj">
-      <Project>{37f2a1dc-5379-4cf3-9d96-2277d86e82ba}</Project>
-      <Name>AosModel</Name>
-    </ProjectReference>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <ProjectReference Include="..\AdvantageShoppingModels\AdvantageShoppingModels.csproj">
+      <Project>{37f2a1dc-5379-4cf3-9d96-2277d86e82ba}</Project>
+      <Name>AdvantageShoppingModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AosModel</RootNamespace>
-    <AssemblyName>AosModel</AssemblyName>
+    <RootNamespace>AdvantageShoppingModels</RootNamespace>
+    <AssemblyName>AdvantageShoppingModels</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,11 +41,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AosModel.tsrx">
+    <Content Include="AdvantageShoppingModel.tsrx">
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="AosModel.tsrx.cs">
-      <DependentUpon>AosModel.tsrx</DependentUpon>
+    <Compile Include="AdvantageShoppingModel.tsrx.cs">
+      <DependentUpon>AdvantageShoppingModel.tsrx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
