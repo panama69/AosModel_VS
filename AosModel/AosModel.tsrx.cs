@@ -32,6 +32,11 @@ namespace AosModel
 			PlusQuantity = new PlusQuantityNode(contextTestObject, this);
 			OrderQuantity = new OrderQuantityNode(contextTestObject, this);
 			BuyNow = new BuyNowNode(contextTestObject, this);
+			Remove = new RemoveNode(contextTestObject, this);
+			Edit = new EditNode(contextTestObject, this);
+			Checkout = new CheckoutNode(contextTestObject, this);
+			CreateAccountRegisterPage = new CreateAccountRegisterPageNode(contextTestObject, this);
+			OrderPayment = new OrderPaymentNode(contextTestObject, this);
 			RebuildDescriptions();
 			
 		}
@@ -50,6 +55,11 @@ namespace AosModel
 		public PlusQuantityNode PlusQuantity { get; private set; }
 		public OrderQuantityNode OrderQuantity { get; private set; }
 		public BuyNowNode BuyNow { get; private set; }
+		public RemoveNode Remove { get; private set; }
+		public EditNode Edit { get; private set; }
+		public CheckoutNode Checkout { get; private set; }
+		public CreateAccountRegisterPageNode CreateAccountRegisterPage { get; private set; }
+		public OrderPaymentNode OrderPayment { get; private set; }
 	
 		#endregion
 	
@@ -81,6 +91,7 @@ namespace AosModel
 				CreateNewAccount = new CreateNewAccountNode(this, applicationModel);
 				ClosePopUp = new ClosePopUpNode(this, applicationModel);
 				PRICEWebElement = new PRICEWebElementNode(this, applicationModel);
+				REGISTERButton = new REGISTERButtonNode(this, applicationModel);
 				DisplayName = @" Advantage Shopping";
 			}
 		
@@ -117,6 +128,7 @@ namespace AosModel
 			public CreateNewAccountNode CreateNewAccount { get; private set; }
 			public ClosePopUpNode ClosePopUp { get; private set; }
 			public PRICEWebElementNode PRICEWebElement { get; private set; }
+			public REGISTERButtonNode REGISTERButton { get; private set; }
 		
 			#endregion
 		
@@ -627,6 +639,33 @@ namespace AosModel
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						CSSSelector = @"#accordionPrice"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class REGISTERButtonNode : ButtonNodeBase
+			{
+				#region Constructors
+			
+				public REGISTERButtonNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"                        REGISTER                    ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.ButtonDescription
+					{
+						ButtonType = @"submit",
+						TagName = @"BUTTON",
+						Name = @"                        REGISTER                    "
 					};
 				}
 			
@@ -1691,7 +1730,7 @@ namespace AosModel
 		
 			public MinusQuantityNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
-				DisplayName = @"Minus Quantity";
+				DisplayName = @"MINUS QUANTITY";
 			}
 		
 			#endregion
@@ -1716,7 +1755,7 @@ namespace AosModel
 		
 			public PlusQuantityNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
-				DisplayName = @"Plus Quantity";
+				DisplayName = @"PLUS QUANTITY";
 			}
 		
 			#endregion
@@ -1785,6 +1824,498 @@ namespace AosModel
 		
 			#endregion
 		
+		}
+
+		public sealed class RemoveNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public RemoveNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"REMOVE";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"A",
+					InnerText = @"REMOVE"
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class EditNode : LinkNodeBase
+		{
+			#region Constructors
+		
+			public EditNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"EDIT ";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.LinkDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.LinkDescription
+				{
+					TagName = @"A",
+					InnerText = @"EDIT "
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class CheckoutNode : ButtonNodeBase
+		{
+			#region Constructors
+		
+			public CheckoutNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"CHECKOUT";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.ButtonDescription
+				{
+					ButtonType = @"submit",
+					TagName = @"BUTTON",
+					Name = @"CHECKOUT",
+					Attributes = { {@"data-ng-click", @"checkout()"} }
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class CreateAccountRegisterPageNode : PageNodeBase
+		{
+			#region Constructors
+		
+			public CreateAccountRegisterPageNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				Username = new UsernameNode(this, applicationModel);
+				Email = new EmailNode(this, applicationModel);
+				Password = new PasswordNode(this, applicationModel);
+				ConfirmPassword = new ConfirmPasswordNode(this, applicationModel);
+				AgreeAgreement = new AgreeAgreementNode(this, applicationModel);
+				Register1 = new Register1Node(this, applicationModel);
+				AccountCreated = new AccountCreatedNode(this, applicationModel);
+				CONTINUESHOPPINGLink = new CONTINUESHOPPINGLinkNode(this, applicationModel);
+				DisplayName = @"CreateAccountRegister";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.PageDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.PageDescription
+				{
+					Url = @"http://www.advantageonlineshopping.com/#/register"
+				};
+			}
+		
+			#endregion
+		
+			#region Test Objects
+		
+			public UsernameNode Username { get; private set; }
+			public EmailNode Email { get; private set; }
+			public PasswordNode Password { get; private set; }
+			public ConfirmPasswordNode ConfirmPassword { get; private set; }
+			public AgreeAgreementNode AgreeAgreement { get; private set; }
+			public Register1Node Register1 { get; private set; }
+			public AccountCreatedNode AccountCreated { get; private set; }
+			public CONTINUESHOPPINGLinkNode CONTINUESHOPPINGLink { get; private set; }
+		
+			#endregion
+		
+			#region Inner Classes
+		
+			public sealed class UsernameNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public UsernameNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"USERNAME";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"text",
+						TagName = @"INPUT",
+						Name = @"username"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class EmailNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public EmailNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"EMAIL";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"email",
+						TagName = @"INPUT",
+						Name = @"email"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class PasswordNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public PasswordNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"PASSWORD";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"password",
+						TagName = @"INPUT",
+						Name = @"password"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class ConfirmPasswordNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public ConfirmPasswordNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"CONFIRM PASSWORD";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"password",
+						TagName = @"INPUT",
+						Name = @"confirm_password"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class AgreeAgreementNode : CheckBoxNodeBase
+			{
+				#region Constructors
+			
+				public AgreeAgreementNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"AGREEMENT";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.CheckBoxDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.CheckBoxDescription
+					{
+						Type = @"checkbox",
+						Name = @"agree_Agreement"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class Register1Node : ButtonNodeBase
+			{
+				#region Constructors
+			
+				public Register1Node(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"REGISTER";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.ButtonDescription
+					{
+						ButtonType = @"submit",
+						TagName = @"BUTTON",
+						Name = As.RegExp(@".*REGISTER.*           ")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class AccountCreatedNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public AccountCreatedNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"ACCOUNT CREATED";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = @"center",
+						TagName = @"DIV",
+						InnerText = As.RegExp(@"Hi.*, your Account was created successfully.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class CONTINUESHOPPINGLinkNode : LinkNodeBase
+			{
+				#region Constructors
+			
+				public CONTINUESHOPPINGLinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"CONTINUE SHOPPING ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.LinkDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.LinkDescription
+					{
+						TagName = @"A",
+						InnerText = @"CONTINUE SHOPPING "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			#endregion
+		}
+
+		public sealed class OrderPaymentNode : PageNodeBase
+		{
+			#region Constructors
+		
+			public OrderPaymentNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				Username = new UsernameNode(this, applicationModel);
+				Password = new PasswordNode(this, applicationModel);
+				Email = new EmailNode(this, applicationModel);
+				Login = new LoginNode(this, applicationModel);
+				DisplayName = @"Order Payment";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.PageDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.PageDescription
+				{
+					Url = @"http://www.advantageonlineshopping.com/#/login"
+				};
+			}
+		
+			#endregion
+		
+			#region Test Objects
+		
+			public UsernameNode Username { get; private set; }
+			public PasswordNode Password { get; private set; }
+			public EmailNode Email { get; private set; }
+			public LoginNode Login { get; private set; }
+		
+			#endregion
+		
+			#region Inner Classes
+		
+			public sealed class UsernameNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public UsernameNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"USERNAME";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"text",
+						TagName = @"INPUT",
+						Name = @"orderPaymenLogin_username"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class PasswordNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public PasswordNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"PASSWORD";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"password",
+						TagName = @"INPUT",
+						Name = @"orderPaymenLogin_password"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class EmailNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public EmailNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"EMAIL";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						Type = @"email",
+						TagName = @"INPUT",
+						Name = @"orderPaymenLogin_email"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginNode : ButtonNodeBase
+			{
+				#region Constructors
+			
+				public LoginNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"LOGIN";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.ButtonDescription
+					{
+						ButtonType = @"submit",
+						TagName = @"BUTTON",
+						Name = As.RegExp(@".*LOGIN.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			#endregion
 		}
 
 		#endregion
