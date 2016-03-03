@@ -37,6 +37,7 @@ namespace AdvantageShoppingModels
 			Checkout = new CheckoutNode(contextTestObject, this);
 			CreateAccountRegisterPage = new CreateAccountRegisterPageNode(contextTestObject, this);
 			OrderPayment = new OrderPaymentNode(contextTestObject, this);
+			ProductDisplayTable = new ProductDisplayTableNode(contextTestObject, this);
 			RebuildDescriptions();
 			
 		}
@@ -60,6 +61,7 @@ namespace AdvantageShoppingModels
 		public CheckoutNode Checkout { get; private set; }
 		public CreateAccountRegisterPageNode CreateAccountRegisterPage { get; private set; }
 		public OrderPaymentNode OrderPayment { get; private set; }
+		public ProductDisplayTableNode ProductDisplayTable { get; private set; }
 	
 		#endregion
 	
@@ -2316,6 +2318,32 @@ namespace AdvantageShoppingModels
 			}
 
 			#endregion
+		}
+
+		public sealed class ProductDisplayTableNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public ProductDisplayTableNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Product Display Table";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"div",
+					ClassName = @"cell categoryRight"
+				};
+			}
+		
+			#endregion
+		
 		}
 
 		#endregion

@@ -1018,5 +1018,19 @@ These are colors that were available across all products which means some produc
         </object>
       </children>
     </object>
+    <object technology="Web" type="WebElement">
+      <name>Product Display Table</name>
+      <codeName>ProductDisplayTable</codeName>
+      <description>This is the table to the right of the filters(which are on the left) which is used to display products for purchase</description>
+      <identification>
+        <properties>
+          <property name="TagName" type="string">div</property>
+          <property name="ClassName" type="string">cell categoryRight</property>
+        </properties>
+      </identification>
+      <tags>
+        <tag>Generic</tag>
+      </tags>
+    </object>
   </objects>
 </applicationModel>
