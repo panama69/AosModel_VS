@@ -18,7 +18,7 @@ namespace Simple
         public void TestFixtureSetUp()
         {
             // Setup once per fixture
-            browser = BrowserFactory.Launch(BrowserType.Chrome);
+            browser = BrowserFactory.Launch(BrowserType.InternetExplorer);
             browser.Navigate("http://www.advantageonlineshopping.com/");
             aosModel = new AdvantageShoppingModels.AdvantageShoppingModel(browser);
 
@@ -56,13 +56,28 @@ namespace Simple
         [Test]
         public void TestModalLogin()
         {
-           
-            aosModel.Header.AdvantageLogo.Click();
+
+            //aosModel.Header.AdvantageLogo.Click();
             aosModel.Header.MyAccountSignOut.Click();
-            aosModel.LoginPopup.LoginPopupUsername.SetValue("corndog");
-            aosModel.LoginPopup.LoginPopupPassword.SetValue("Oads124!");
-            aosModel.LoginPopup.LoginPopupEmail.SetValue("a@b.com");
+            aosModel.LoginPopup.LoginPopupUsername.SetValue("WillZuill");
+            aosModel.LoginPopup.LoginPopupPassword.SetValue("X1234x");
+            aosModel.LoginPopup.LoginPopupEmail.SetValue("will@will.com");
+
+            var j = 0;
+            for (int i=0; i< 5000;i++){
+                if (aosModel.LoginPopup.LoginPopupSignInButton.ClassName.Equals(
+                    "sing-in ng-binding ng-isolate-scope",StringComparison.CurrentCultureIgnoreCase )){
+                        j = i;
+                    i = 10000;
+                }
+         
+                Thread.Sleep(1);
+            }
+
+            aosModel.LoginPopup.LoginPopupSignInButton.Click();
+            Reporter.ReportEvent("J:" + j, "");
         }
+
         [Test]
         public void Test()
         {
