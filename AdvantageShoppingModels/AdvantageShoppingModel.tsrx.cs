@@ -25,8 +25,6 @@ namespace AdvantageShoppingModels
 			AdvantageShoppingPage = new AdvantageShoppingPageNode(contextTestObject, this);
 			Header = new HeaderNode(contextTestObject, this);
 			FilterBy = new FilterByNode(contextTestObject, this);
-			ProductsColors = new ProductsColorsNode(contextTestObject, this);
-			ProductColor = new ProductColorNode(contextTestObject, this);
 			AddToCart = new AddToCartNode(contextTestObject, this);
 			MinusQuantity = new MinusQuantityNode(contextTestObject, this);
 			PlusQuantity = new PlusQuantityNode(contextTestObject, this);
@@ -35,9 +33,15 @@ namespace AdvantageShoppingModels
 			Remove = new RemoveNode(contextTestObject, this);
 			Edit = new EditNode(contextTestObject, this);
 			Checkout = new CheckoutNode(contextTestObject, this);
+			ProductDisplayTable = new ProductDisplayTableNode(contextTestObject, this);
+			FilterTable = new FilterTableNode(contextTestObject, this);
+			ProductColorList = new ProductColorListNode(contextTestObject, this);
+			ProductColorPallet = new ProductColorPalletNode(contextTestObject, this);
+			ProductDisplayTile = new ProductDisplayTileNode(contextTestObject, this);
+			ProductDisplayTileSections = new ProductDisplayTileSectionsNode(contextTestObject, this);
 			CreateAccountRegisterPage = new CreateAccountRegisterPageNode(contextTestObject, this);
 			OrderPayment = new OrderPaymentNode(contextTestObject, this);
-			ProductDisplayTable = new ProductDisplayTableNode(contextTestObject, this);
+			ShoppingCartPage = new ShoppingCartPageNode(contextTestObject, this);
 			RebuildDescriptions();
 			
 		}
@@ -49,8 +53,6 @@ namespace AdvantageShoppingModels
 		public AdvantageShoppingPageNode AdvantageShoppingPage { get; private set; }
 		public HeaderNode Header { get; private set; }
 		public FilterByNode FilterBy { get; private set; }
-		public ProductsColorsNode ProductsColors { get; private set; }
-		public ProductColorNode ProductColor { get; private set; }
 		public AddToCartNode AddToCart { get; private set; }
 		public MinusQuantityNode MinusQuantity { get; private set; }
 		public PlusQuantityNode PlusQuantity { get; private set; }
@@ -59,9 +61,15 @@ namespace AdvantageShoppingModels
 		public RemoveNode Remove { get; private set; }
 		public EditNode Edit { get; private set; }
 		public CheckoutNode Checkout { get; private set; }
+		public ProductDisplayTableNode ProductDisplayTable { get; private set; }
+		public FilterTableNode FilterTable { get; private set; }
+		public ProductColorListNode ProductColorList { get; private set; }
+		public ProductColorPalletNode ProductColorPallet { get; private set; }
+		public ProductDisplayTileNode ProductDisplayTile { get; private set; }
+		public ProductDisplayTileSectionsNode ProductDisplayTileSections { get; private set; }
 		public CreateAccountRegisterPageNode CreateAccountRegisterPage { get; private set; }
 		public OrderPaymentNode OrderPayment { get; private set; }
-		public ProductDisplayTableNode ProductDisplayTable { get; private set; }
+		public ShoppingCartPageNode ShoppingCartPage { get; private set; }
 	
 		#endregion
 	
@@ -883,6 +891,9 @@ namespace AdvantageShoppingModels
 		
 			public FilterByNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
+				FilterColorPallet = new FilterColorPalletNode(this, applicationModel);
+				FilterOptions = new FilterOptionsNode(this, applicationModel);
+				FilterExpanded = new FilterExpandedNode(this, applicationModel);
 				Memory = new MemoryNode(this, applicationModel);
 				Graphics = new GraphicsNode(this, applicationModel);
 				OperatingSystem = new OperatingSystemNode(this, applicationModel);
@@ -913,6 +924,9 @@ namespace AdvantageShoppingModels
 		
 			#region Test Objects
 		
+			public FilterColorPalletNode FilterColorPallet { get; private set; }
+			public FilterOptionsNode FilterOptions { get; private set; }
+			public FilterExpandedNode FilterExpanded { get; private set; }
 			public MemoryNode Memory { get; private set; }
 			public GraphicsNode Graphics { get; private set; }
 			public OperatingSystemNode OperatingSystem { get; private set; }
@@ -928,6 +942,83 @@ namespace AdvantageShoppingModels
 		
 			#region Inner Classes
 		
+			public sealed class FilterColorPalletNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterColorPalletNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"FilterColorPallet";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = @"productColor ",
+						TagName = @"A"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterOptionsNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterOptionsNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter Options";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = As.RegExp(@"accordion roboto-regular arrowDown ng-binding.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterExpandedNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterExpandedNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter Expanded";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						TagName = @"DIV",
+						ClassName = @"option"
+					};
+				}
+			
+				#endregion
+			
+			}
+
 			public sealed class MemoryNode : WebElementNodeBase
 			{
 				#region Constructors
@@ -1182,525 +1273,6 @@ namespace AdvantageShoppingModels
 			#endregion
 		}
 
-		public sealed class ProductsColorsNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public ProductsColorsNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-			{
-				Black = new BlackNode(this, applicationModel);
-				BlizardWhite = new BlizardWhiteNode(this, applicationModel);
-				Blue = new BlueNode(this, applicationModel);
-				CobaltBlue = new CobaltBlueNode(this, applicationModel);
-				DeepSkyBlue = new DeepSkyBlueNode(this, applicationModel);
-				Gray = new GrayNode(this, applicationModel);
-				Khaki = new KhakiNode(this, applicationModel);
-				Pink = new PinkNode(this, applicationModel);
-				DisplayName = @"Products Colors";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
-				{
-					ClassName = @"option",
-					InnerHTML = As.RegExp(@".*productsColors.*")
-				};
-			}
-		
-			#endregion
-		
-			#region Test Objects
-		
-			public BlackNode Black { get; private set; }
-			public BlizardWhiteNode BlizardWhite { get; private set; }
-			public BlueNode Blue { get; private set; }
-			public CobaltBlueNode CobaltBlue { get; private set; }
-			public DeepSkyBlueNode DeepSkyBlue { get; private set; }
-			public GrayNode Gray { get; private set; }
-			public KhakiNode Khaki { get; private set; }
-			public PinkNode Pink { get; private set; }
-		
-			#endregion
-		
-			#region Inner Classes
-		
-			public sealed class BlackNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public BlackNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"BLACK";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						Title = @"BLACK",
-						ClassName = As.RegExp(@"productColor.*")
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class BlizardWhiteNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public BlizardWhiteNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"BLIZZARD WHITE";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = @"productColor.*",
-						Title = @"BLIZZARD WHITE"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class BlueNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public BlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"BLUE";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						Title = @"BLUE",
-						ClassName = As.RegExp(@"productColor.*")
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class CobaltBlueNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public CobaltBlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"COBALT BLUE";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"COBALT BLUE"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class DeepSkyBlueNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public DeepSkyBlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"DEEPSKYBLUE";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						Title = @"DEEPSKYBLUE",
-						ClassName = As.RegExp(@"productColor.*")
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class GrayNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public GrayNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"GRAY";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						Title = @"GRAY",
-						ClassName = As.RegExp(@"productColor.*")
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class KhakiNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public KhakiNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"KHAKI";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						Title = @"KHAKI",
-						ClassName = As.RegExp(@"productColor.*")
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class PinkNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public PinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"PINK";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						Title = @"PINK",
-						ClassName = As.RegExp(@"productColor.*")
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			#endregion
-		}
-
-		public sealed class ProductColorNode : WebElementNodeBase
-		{
-			#region Constructors
-		
-			public ProductColorNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-			{
-				Black = new BlackNode(this, applicationModel);
-				BlizzardWhite = new BlizzardWhiteNode(this, applicationModel);
-				CobaltBlue = new CobaltBlueNode(this, applicationModel);
-				PeachyPink = new PeachyPinkNode(this, applicationModel);
-				Silver = new SilverNode(this, applicationModel);
-				SunsetRed = new SunsetRedNode(this, applicationModel);
-				Pink = new PinkNode(this, applicationModel);
-				Khaki = new KhakiNode(this, applicationModel);
-				DisplayName = @"Color: ";
-			}
-		
-			#endregion
-		
-			#region Description
-		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-			{
-				return new HP.LFT.SDK.Web.WebElementDescription
-				{
-					ClassName = @"colors ng-scope",
-					InnerText = @"Color: "
-				};
-			}
-		
-			#endregion
-		
-			#region Test Objects
-		
-			public BlackNode Black { get; private set; }
-			public BlizzardWhiteNode BlizzardWhite { get; private set; }
-			public CobaltBlueNode CobaltBlue { get; private set; }
-			public PeachyPinkNode PeachyPink { get; private set; }
-			public SilverNode Silver { get; private set; }
-			public SunsetRedNode SunsetRed { get; private set; }
-			public PinkNode Pink { get; private set; }
-			public KhakiNode Khaki { get; private set; }
-		
-			#endregion
-		
-			#region Inner Classes
-		
-			public sealed class BlackNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public BlackNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"BLACK";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"BLACK"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class BlizzardWhiteNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public BlizzardWhiteNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"BLIZZARD WHITE";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"BLIZZARD WHITE"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class CobaltBlueNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public CobaltBlueNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"COBALT BLUE";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"COBALT BLUE"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class PeachyPinkNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public PeachyPinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"PEACHY PINK";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"PEACHY PINK"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class SilverNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public SilverNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"SILVER";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"SILVER"
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class SunsetRedNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public SunsetRedNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"SUNSET RED";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"SUNSET RED",
-						Index = 7
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class PinkNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public PinkNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"PINK";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"PINK",
-						Index = 7
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			public sealed class KhakiNode : WebElementNodeBase
-			{
-				#region Constructors
-			
-				public KhakiNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
-				{
-					DisplayName = @"KHAKI";
-				}
-			
-				#endregion
-			
-				#region Description
-			
-				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
-				{
-					return new HP.LFT.SDK.Web.WebElementDescription
-					{
-						ClassName = As.RegExp(@"productColor.*"),
-						Title = @"KHAKI",
-						Index = 7
-					};
-				}
-			
-				#endregion
-			
-			}
-
-			#endregion
-		}
-
 		public sealed class AddToCartNode : ButtonNodeBase
 		{
 			#region Constructors
@@ -1901,6 +1473,163 @@ namespace AdvantageShoppingModels
 					TagName = @"BUTTON",
 					Name = @"CHECKOUT",
 					Attributes = { {@"data-ng-click", @"checkout()"} }
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class ProductDisplayTableNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public ProductDisplayTableNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Product Display Table";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"div",
+					ClassName = @"cell categoryRight"
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class FilterTableNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public FilterTableNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Filter Table";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"DIV",
+					ClassName = @"cell categoryLeft"
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class ProductColorListNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public ProductColorListNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Product Color List";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = As.RegExp(@"SPAN"),
+					ClassName = As.RegExp(@"productColor ng-scope.*")
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class ProductColorPalletNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public ProductColorPalletNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Product Color Pallet";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"DIV",
+					ClassName = @"colors ng-scope",
+					InnerText = As.RegExp(@"Color:.*")
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class ProductDisplayTileNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public ProductDisplayTileNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Product Display Tile";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"LI",
+					ClassName = @"ng-scope"
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class ProductDisplayTileSectionsNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public ProductDisplayTileSectionsNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Product Display Tile Sections";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					TagName = @"A",
+					ClassName = @"ng-binding"
 				};
 			}
 		
@@ -2320,35 +2049,399 @@ namespace AdvantageShoppingModels
 			#endregion
 		}
 
-		public sealed class ProductDisplayTableNode : WebElementNodeBase
+		public sealed class ShoppingCartPageNode : PageNodeBase
 		{
 			#region Constructors
 		
-			public ProductDisplayTableNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			public ShoppingCartPageNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 			{
-				DisplayName = @"Product Display Table";
+				ShoppingCartList = new ShoppingCartListNode(this, applicationModel);
+				DisplayName = @"Shopping Cart Page";
 			}
 		
 			#endregion
 		
 			#region Description
 		
-			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			protected override HP.LFT.SDK.Web.PageDescription CreateDescription()
 			{
-				return new HP.LFT.SDK.Web.WebElementDescription
+				return new HP.LFT.SDK.Web.PageDescription
 				{
-					TagName = @"div",
-					ClassName = @"cell categoryRight"
+					Url = As.RegExp(@".*/#/shoppingCart")
 				};
 			}
 		
 			#endregion
 		
+			#region Test Objects
+		
+			public ShoppingCartListNode ShoppingCartList { get; private set; }
+		
+			#endregion
+		
+			#region Inner Classes
+		
+			public sealed class ShoppingCartListNode : TableNodeBase
+			{
+				#region Constructors
+			
+				public ShoppingCartListNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Shopping Cart List";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.TableDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.TableDescription
+					{
+						TagName = @"TABLE",
+						CSSSelector = @"#shoppingCart table"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			#endregion
 		}
 
 		#endregion
 
 		#region Base Classes
+
+		public abstract class TableNodeBase : AppModelNodeBase<HP.LFT.SDK.Web.ITable, HP.LFT.SDK.Web.TableDescription>, HP.LFT.SDK.Web.ITable
+		{
+			public TableNodeBase(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel) { }
+
+			#region Public Methods
+	
+			public HP.LFT.SDK.Web.ITableRow FindRowWithCellText(string text)
+			{
+				return Concrete.FindRowWithCellText(text);
+			}
+	
+			public HP.LFT.SDK.Web.ITableRow FindRowWithCellText(string text, uint startFromRow)
+			{
+				return Concrete.FindRowWithCellText(text, startFromRow);
+			}
+	
+			public HP.LFT.SDK.Web.ITableRow FindRowWithCellTextInColumn(string text, uint columnNumber)
+			{
+				return Concrete.FindRowWithCellTextInColumn(text, columnNumber);
+			}
+	
+			public HP.LFT.SDK.Web.ITableRow FindRowWithCellTextInColumn(string text, uint columnNumber, uint startFromRow)
+			{
+				return Concrete.FindRowWithCellTextInColumn(text, columnNumber, startFromRow);
+			}
+	
+			public void DoubleClick()
+			{
+				 Concrete.DoubleClick();
+			}
+	
+			public void DoubleClick(HP.LFT.SDK.Web.WebDoubleClickArgs args)
+			{
+				 Concrete.DoubleClick(args);
+			}
+	
+			public void HoverTap()
+			{
+				 Concrete.HoverTap();
+			}
+	
+			public void HoverTap(HP.LFT.SDK.Location location)
+			{
+				 Concrete.HoverTap(location);
+			}
+	
+			public void FireEvent(HP.LFT.SDK.Web.EventInfo eventInfo)
+			{
+				 Concrete.FireEvent(eventInfo);
+			}
+	
+			public void LongPress()
+			{
+				 Concrete.LongPress();
+			}
+	
+			public void LongPress(HP.LFT.SDK.Web.WebLongPressArgs args)
+			{
+				 Concrete.LongPress(args);
+			}
+	
+			public void Pan(long deltaX, long deltaY)
+			{
+				 Concrete.Pan(deltaX, deltaY);
+			}
+	
+			public void Pan(HP.LFT.SDK.Web.WebPanArgs args)
+			{
+				 Concrete.Pan(args);
+			}
+	
+			public void Pinch(double scale)
+			{
+				 Concrete.Pinch(scale);
+			}
+	
+			public void Pinch(HP.LFT.SDK.Web.WebPinchArgs args)
+			{
+				 Concrete.Pinch(args);
+			}
+	
+			public void Swipe(HP.LFT.SDK.SwipeDirection direction)
+			{
+				 Concrete.Swipe(direction);
+			}
+	
+			public void Swipe(HP.LFT.SDK.Web.WebSwipeArgs args)
+			{
+				 Concrete.Swipe(args);
+			}
+	
+			public HP.LFT.SDK.IDescription GetDescription()
+			{
+				return Concrete.GetDescription();
+			}
+	
+			public TChild[] FindChildren<TChild>(HP.LFT.SDK.IDescription selector)  where TChild:class, HP.LFT.SDK.ITestObject
+			{
+				return Concrete.FindChildren<TChild>(selector);
+			}
+	
+			public bool Exists()
+			{
+				return Concrete.Exists();
+			}
+	
+			public bool Exists(uint timeout)
+			{
+				return Concrete.Exists(timeout);
+			}
+	
+			public System.Drawing.Image GetSnapshot()
+			{
+				return Concrete.GetSnapshot();
+			}
+	
+			public void Highlight()
+			{
+				 Concrete.Highlight();
+			}
+	
+			public uint HighlightMatches<TChild>(HP.LFT.SDK.IDescription description)  where TChild:class, HP.LFT.SDK.ITestObject
+			{
+				return Concrete.HighlightMatches<TChild>(description);
+			}
+	
+			public System.Drawing.Rectangle[] GetTextLocations(string textToFind)
+			{
+				return Concrete.GetTextLocations(textToFind);
+			}
+	
+			public System.Drawing.Rectangle[] GetTextLocations(string textToFind, System.Drawing.Rectangle textArea)
+			{
+				return Concrete.GetTextLocations(textToFind, textArea);
+			}
+	
+			public string GetVisibleText()
+			{
+				return Concrete.GetVisibleText();
+			}
+	
+			public string GetVisibleText(System.Drawing.Rectangle textArea)
+			{
+				return Concrete.GetVisibleText(textArea);
+			}
+	
+			public System.Nullable<System.Drawing.Point> VerifyImageExists(System.Drawing.Image imageToFind, byte similarity = 100)
+			{
+				return Concrete.VerifyImageExists(imageToFind, similarity);
+			}
+	
+			public bool VerifyImageMatch(System.Drawing.Image expectedImage, byte pixelTolerance = 0, byte rgbTolerance = 0)
+			{
+				return Concrete.VerifyImageMatch(expectedImage, pixelTolerance, rgbTolerance);
+			}
+	
+			public bool VerifyImageMatch(System.Drawing.Image expectedImage, HP.LFT.SDK.Utils.ImageMaskArea maskArea, byte pixelTolerance = 0, byte rgbTolerance = 0)
+			{
+				return Concrete.VerifyImageMatch(expectedImage, maskArea, pixelTolerance, rgbTolerance);
+			}
+	
+			public TChild Describe<TChild>(HP.LFT.SDK.IDescription description)  where TChild:class, HP.LFT.SDK.ITestObject
+			{
+				return Concrete.Describe<TChild>(description);
+			}
+	
+			public void Click(HP.LFT.SDK.MouseButton button = HP.LFT.SDK.MouseButton.Left)
+			{
+				 Concrete.Click(button);
+			}
+	
+			public void Click(HP.LFT.SDK.ClickArgs args)
+			{
+				 Concrete.Click(args);
+			}
+	
+			public string GetAttribute(string attributeName)
+			{
+				return Concrete.GetAttribute(attributeName);
+			}
+	
+			public string GetComputedStyle(string styleProperty)
+			{
+				return Concrete.GetComputedStyle(styleProperty);
+			}
+	
+			public TChild Describe<TChild>(HP.LFT.SDK.Web.XPathDescription xpath)  where TChild:class, HP.LFT.SDK.Web.IWebElement
+			{
+				return Concrete.Describe<TChild>(xpath);
+			}
+	
+			public TChild Describe<TChild>(HP.LFT.SDK.Web.CSSDescription cssSelector)  where TChild:class, HP.LFT.SDK.Web.IWebElement
+			{
+				return Concrete.Describe<TChild>(cssSelector);
+			}
+	
+			public void DragAndDropOn(HP.LFT.SDK.ISupportDragAndDrop dropTarget)
+			{
+				 Concrete.DragAndDropOn(dropTarget);
+			}
+	
+			public void DragAndDropOn(HP.LFT.SDK.ISupportDragAndDrop dropTarget, HP.LFT.SDK.DragAndDropArgs dragAndDropArgs)
+			{
+				 Concrete.DragAndDropOn(dropTarget, dragAndDropArgs);
+			}
+	
+			#endregion
+	
+			#region Public Properties
+	
+			public uint Border
+			{
+				get { return Concrete.Border; }		
+			}
+	
+			public System.Collections.ObjectModel.ReadOnlyCollection<string> ColumnHeaders
+			{
+				get { return Concrete.ColumnHeaders; }		
+			}
+	
+			public System.Collections.ObjectModel.ReadOnlyCollection<HP.LFT.SDK.Web.ITableRow> Rows
+			{
+				get { return Concrete.Rows; }		
+			}
+	
+			public string XPath
+			{
+				get { return Concrete.XPath; }		
+			}
+	
+			public string CSSSelector
+			{
+				get { return Concrete.CSSSelector; }		
+			}
+	
+			public string Role
+			{
+				get { return Concrete.Role; }		
+			}
+	
+			public string DisplayName
+			{
+				get { return Concrete.DisplayName; }		
+				set { Concrete.DisplayName = value; }
+			}
+	
+			public string ClassName
+			{
+				get { return Concrete.ClassName; }		
+			}
+	
+			public string Id
+			{
+				get { return Concrete.Id; }		
+			}
+	
+			public string TagName
+			{
+				get { return Concrete.TagName; }		
+			}
+	
+			public string InnerHTML
+			{
+				get { return Concrete.InnerHTML; }		
+			}
+	
+			public string OuterHTML
+			{
+				get { return Concrete.OuterHTML; }		
+			}
+	
+			public string InnerText
+			{
+				get { return Concrete.InnerText; }		
+			}
+	
+			public string OuterText
+			{
+				get { return Concrete.OuterText; }		
+			}
+	
+			public string Name
+			{
+				get { return Concrete.Name; }		
+			}
+	
+			public string Title
+			{
+				get { return Concrete.Title; }		
+			}
+	
+			public bool IsVisible
+			{
+				get { return Concrete.IsVisible; }		
+			}
+	
+			public System.Collections.Generic.IReadOnlyDictionary<string, string> Attributes
+			{
+				get { return Concrete.Attributes; }		
+			}
+	
+			public System.Collections.Generic.IReadOnlyDictionary<string, string> Styles
+			{
+				get { return Concrete.Styles; }		
+			}
+	
+			public System.Drawing.Point Location
+			{
+				get { return Concrete.Location; }		
+			}
+	
+			public System.Drawing.Point AbsoluteLocation
+			{
+				get { return Concrete.AbsoluteLocation; }		
+			}
+	
+			public System.Drawing.Size Size
+			{
+				get { return Concrete.Size; }		
+			}
+	
+			public dynamic NativeObject
+			{
+				get { return Concrete.NativeObject; }		
+			}
+	
+			#endregion
+		}
 
 		public abstract class LinkNodeBase : AppModelNodeBase<HP.LFT.SDK.Web.ILink, HP.LFT.SDK.Web.LinkDescription>, HP.LFT.SDK.Web.ILink
 		{
