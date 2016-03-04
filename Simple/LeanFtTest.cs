@@ -11,10 +11,17 @@ namespace Simple
     [TestFixture]
     public class LeanFtTest : UnitTestClassBase
     {
+        private IBrowser browser;
+        private AdvantageShoppingModels.AdvantageShoppingModel aosModel;
+
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
             // Setup once per fixture
+            browser = BrowserFactory.Launch(BrowserType.Chrome);
+            browser.Navigate("http://www.advantageonlineshopping.com/");
+            aosModel = new AdvantageShoppingModels.AdvantageShoppingModel(browser);
+
         }
 
         [SetUp]
@@ -23,6 +30,39 @@ namespace Simple
             // Before each test
         }
 
+        public bool LoginTest(bool runAsTest)
+        {
+            var succesfulLogin = false;
+
+            Reporter.ReportEvent("mystep", aosModel.LoginPopup.LoginPopupUsername.Exists() + "<br>" + aosModel.OrderPayment.Username.Exists());
+            if (aosModel.LoginPopup.LoginPopupUsername.Exists())
+            {
+                aosModel.LoginPopup.LoginPopupUsername.SetValue("corndog");
+                aosModel.LoginPopup.LoginPopupClose.Click();
+                succesfulLogin = true;
+            }else
+            if (aosModel.OrderPayment.Username.Exists())
+            {
+                aosModel.OrderPayment.Username.SetValue("corndog2");
+                succesfulLogin = true;
+            }
+            else
+            {
+                //unknow path of login in
+            }
+            return succesfulLogin;
+        }
+
+        [Test]
+        public void TestModalLogin()
+        {
+           
+            aosModel.Header.AdvantageLogo.Click();
+            aosModel.Header.MyAccountSignOut.Click();
+            aosModel.LoginPopup.LoginPopupUsername.SetValue("corndog");
+            aosModel.LoginPopup.LoginPopupPassword.SetValue("Oads124!");
+            aosModel.LoginPopup.LoginPopupEmail.SetValue("a@b.com");
+        }
         [Test]
         public void Test()
         {

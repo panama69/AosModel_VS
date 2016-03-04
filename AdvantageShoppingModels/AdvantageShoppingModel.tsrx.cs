@@ -42,6 +42,8 @@ namespace AdvantageShoppingModels
 			CreateAccountRegisterPage = new CreateAccountRegisterPageNode(contextTestObject, this);
 			OrderPayment = new OrderPaymentNode(contextTestObject, this);
 			ShoppingCartPage = new ShoppingCartPageNode(contextTestObject, this);
+			LoginPopup = new LoginPopupNode(contextTestObject, this);
+			ModalLogin = new ModalLoginNode(contextTestObject, this);
 			RebuildDescriptions();
 			
 		}
@@ -70,6 +72,8 @@ namespace AdvantageShoppingModels
 		public CreateAccountRegisterPageNode CreateAccountRegisterPage { get; private set; }
 		public OrderPaymentNode OrderPayment { get; private set; }
 		public ShoppingCartPageNode ShoppingCartPage { get; private set; }
+		public LoginPopupNode LoginPopup { get; private set; }
+		public ModalLoginNode ModalLogin { get; private set; }
 	
 		#endregion
 	
@@ -2108,6 +2112,257 @@ namespace AdvantageShoppingModels
 			}
 
 			#endregion
+		}
+
+		public sealed class LoginPopupNode : WebElementNodeBase
+		{
+			#region Constructors
+		
+			public LoginPopupNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				LoginPopupClose = new LoginPopupCloseNode(this, applicationModel);
+				LoginWithFacebook = new LoginWithFacebookNode(this, applicationModel);
+				LoginPopupSignInButton = new LoginPopupSignInButtonNode(this, applicationModel);
+				LoginPopupEmail = new LoginPopupEmailNode(this, applicationModel);
+				LoginPopupPassword = new LoginPopupPasswordNode(this, applicationModel);
+				LoginPopupUsername = new LoginPopupUsernameNode(this, applicationModel);
+				LoginPopupRememberCheckBox = new LoginPopupRememberCheckBoxNode(this, applicationModel);
+				DisplayName = @"Login Popup";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.WebElementDescription
+				{
+					ClassName = @"PopUp"
+				};
+			}
+		
+			#endregion
+		
+			#region Test Objects
+		
+			public LoginPopupCloseNode LoginPopupClose { get; private set; }
+			public LoginWithFacebookNode LoginWithFacebook { get; private set; }
+			public LoginPopupSignInButtonNode LoginPopupSignInButton { get; private set; }
+			public LoginPopupEmailNode LoginPopupEmail { get; private set; }
+			public LoginPopupPasswordNode LoginPopupPassword { get; private set; }
+			public LoginPopupUsernameNode LoginPopupUsername { get; private set; }
+			public LoginPopupRememberCheckBoxNode LoginPopupRememberCheckBox { get; private set; }
+		
+			#endregion
+		
+			#region Inner Classes
+		
+			public sealed class LoginPopupCloseNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public LoginPopupCloseNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Login PopUp Close";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = @"closePopUpBtn"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginWithFacebookNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public LoginWithFacebookNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"SIGN IN WITH FACEBOOK";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"SIGN IN WITH FACEBOOK"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginPopupSignInButtonNode : ButtonNodeBase
+			{
+				#region Constructors
+			
+				public LoginPopupSignInButtonNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Login Popup Sign In";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.ButtonDescription
+					{
+						ButtonType = @"submit",
+						InnerText = @"SIGN IN "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginPopupEmailNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public LoginPopupEmailNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Login Popup Email";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						TagName = @"INPUT",
+						Name = @"smollLoginEmail"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginPopupPasswordNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public LoginPopupPasswordNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Login Popup Password";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						TagName = @"INPUT",
+						Name = @"smollLoginPassword"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginPopupUsernameNode : EditFieldNodeBase
+			{
+				#region Constructors
+			
+				public LoginPopupUsernameNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Login Popup Username";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.EditFieldDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.EditFieldDescription
+					{
+						TagName = @"INPUT",
+						Name = @"smollLoginUsername"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class LoginPopupRememberCheckBoxNode : CheckBoxNodeBase
+			{
+				#region Constructors
+			
+				public LoginPopupRememberCheckBoxNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Login Popup Remember CheckBox";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.CheckBoxDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.CheckBoxDescription
+					{
+						OuterHTML = As.RegExp(@"<input type=""checkbox"" ng-model=""rememberMe"".*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			#endregion
+		}
+
+		public sealed class ModalLoginNode : PageNodeBase
+		{
+			#region Constructors
+		
+			public ModalLoginNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @"Modal Login";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.PageDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.PageDescription
+				{
+					Url = As.RegExp(@"http://www.advantageonlineshopping.com/#/.*")
+				};
+			}
+		
+			#endregion
+		
 		}
 
 		#endregion
