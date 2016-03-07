@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Drawing;
 using NUnit.Framework;
 using HP.LFT.SDK;
 using HP.LFT.Verifications;
@@ -81,43 +82,68 @@ namespace Simple
         [Test]
         public void Test()
         {
-            browser.Describe<IWebElement>(new WebElementDescription
-            {
-                TagName = @"SPAN",
-                InnerText = @"TABLETS"
-            }).Click();
 
-            IWebElement memoryNode = browser.Describe<IWebElement>(new WebElementDescription
-            {
-                InnerText = @"MEMORY "
-            });
-            memoryNode.Click();
+            aosModel.AdvantageShoppingPage.Laptops.Click();
+            aosModel.FilterBy.Price.Click();
 
-            IWebElement memoryOptionsContainer = aosModel.FilterBy.FilterExpanded;
-                /*browser.Describe<IWebElement>(new WebElementDescription
+
+ 
+            IWebElement leftHandle = browser.Describe<IWebElement>(new WebElementDescription
             {
-                ClassName = @"option",
+                ClassName = @"noUi-handle noUi-handle-lower",
                 TagName = @"DIV",
                 IsVisible = true
-            });*/
+            }) ;
+            Reporter.ReportEvent("Point: " + leftHandle.AbsoluteLocation.X + "," + leftHandle.AbsoluteLocation.Y, "");
 
-            IWebElement[] memoryChildren = memoryOptionsContainer.FindChildren<ICheckBox>(aosModel.FilterBy.FilterCheckBox.Description);// (new CheckBoxDescription { TagName = "INPUT", Type = "checkbox" });
-            Reporter.ReportEvent("MemoryChildrenCount: " + memoryChildren.Length, "");
-            IWebElement[] memoryChildren2 = memoryOptionsContainer.FindChildren<IWebElement>(aosModel.FilterBy.FilterItemName.Description);// (new WebElementDescription { TagName = "SPAN", ClassName = "roboto-regular ng-binding" });
-            Reporter.ReportEvent("my count" + memoryChildren2.Length, "");
-            int i = 0;
-            foreach (IWebElement memoryChild in memoryChildren2)
+            Point leftPoint = new Point(leftHandle.AbsoluteLocation.X, leftHandle.AbsoluteLocation.Y);
+
+            IWebElement rightHandle = browser.Describe<IWebElement>(new WebElementDescription
             {
-                Reporter.ReportEvent(memoryChild.InnerText, "");
-                if (memoryChild.InnerText.Equals("4 GB 1067 MHz LPDDR3 SDRAM"))
-                {
-                    memoryChildren[i].Click();
-                }
-                else
-                    i++;
-            }
+                ClassName = @"noUi-handle noUi-handle-upper",
+                TagName = @"DIV",
+                IsVisible = true
+            });
+            Point rightPoint = new Point(rightHandle.AbsoluteLocation.X, rightHandle.AbsoluteLocation.Y);
+
+            Point newPoint = new Point((rightPoint.X-leftPoint.X)/2, leftPoint.Y);
+
+         
+            Thread.Sleep(3000);
+            //Mouse.Click(new Point(int.Parse(leftHandle.AbsoluteLocation.X.ToString())+100, int.Parse(leftHandle.AbsoluteLocation.Y.ToString())));
+            //Mouse.DragAndDrop(leftPoint, newPoint);
+            IWebElement slider =  browser.Describe<IWebElement>(new WebElementDescription
+            {
+                ClassName = @"noUi-origin noUi-connect",
+                TagName = @"DIV"
+            });
+
+            int x = int.Parse(slider.AbsoluteLocation.X.ToString()) + 100;
+            Mouse.Click(new Point(x, int.Parse(slider.AbsoluteLocation.Y.ToString())+5));
         }
 
+        [Test]
+        public void MouseClick()
+        {
+            int x, y;
+            IWebElement myB = browser.Describe<IWebElement>(new WebElementDescription
+            {
+                TagName = @"SPAN",
+                InnerText = @"HEADPHONES"
+            });
+            x = int.Parse(myB.AbsoluteLocation.X.ToString());
+            Reporter.ReportEvent("Point: "+myB.AbsoluteLocation.X+","+myB.AbsoluteLocation.Y,"");
+
+            Thread.Sleep(3000);
+            myB = browser.Describe<IWebElement>(new WebElementDescription
+            {
+                TagName = @"SPAN",
+                InnerText = @"HEADPHONES"
+            });
+            Reporter.ReportEvent("Point: " + myB.AbsoluteLocation.X + "," + myB.AbsoluteLocation.Y, "");
+            Mouse.Click(new Point(int.Parse(myB.AbsoluteLocation.X.ToString()), int.Parse(myB.AbsoluteLocation.Y.ToString())));
+            //Mouse.Click(new Point(997, 715));
+        }
         [TearDown]
         public void TearDown()
         {

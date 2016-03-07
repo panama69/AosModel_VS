@@ -425,11 +425,11 @@
           </tags>
         </object>
         <object technology="Web" type="WebElement">
-          <name>MEMORY </name>
-          <codeName>Memory</codeName>
+          <name>Filter Template Expand</name>
+          <codeName>FilterTemplateExpand</codeName>
           <identification>
             <properties>
-              <property name="InnerText" type="string">MEMORY </property>
+              <property name="InnerText" type="string" isRegExp="true" />
             </properties>
           </identification>
           <tags>
@@ -514,6 +514,18 @@
           <identification>
             <properties>
               <property name="InnerText" type="string">DISPLAY </property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>MEMORY </name>
+          <codeName>Memory</codeName>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string">MEMORY </property>
             </properties>
           </identification>
           <tags>

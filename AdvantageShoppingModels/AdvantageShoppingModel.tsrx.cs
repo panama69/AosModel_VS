@@ -903,7 +903,7 @@ namespace AdvantageShoppingModels
 				FilterCheckBox = new FilterCheckBoxNode(this, applicationModel);
 				FilterItemName = new FilterItemNameNode(this, applicationModel);
 				FilterCheckboxContainer = new FilterCheckboxContainerNode(this, applicationModel);
-				Memory = new MemoryNode(this, applicationModel);
+				FilterTemplateExpand = new FilterTemplateExpandNode(this, applicationModel);
 				Graphics = new GraphicsNode(this, applicationModel);
 				OperatingSystem = new OperatingSystemNode(this, applicationModel);
 				WirelessTechnology = new WirelessTechnologyNode(this, applicationModel);
@@ -911,6 +911,7 @@ namespace AdvantageShoppingModels
 				Price = new PriceNode(this, applicationModel);
 				Customization = new CustomizationNode(this, applicationModel);
 				Display = new DisplayNode(this, applicationModel);
+				Memory = new MemoryNode(this, applicationModel);
 				Processor = new ProcessorNode(this, applicationModel);
 				Color = new ColorNode(this, applicationModel);
 				DisplayName = @"FILTER BY";
@@ -939,7 +940,7 @@ namespace AdvantageShoppingModels
 			public FilterCheckBoxNode FilterCheckBox { get; private set; }
 			public FilterItemNameNode FilterItemName { get; private set; }
 			public FilterCheckboxContainerNode FilterCheckboxContainer { get; private set; }
-			public MemoryNode Memory { get; private set; }
+			public FilterTemplateExpandNode FilterTemplateExpand { get; private set; }
 			public GraphicsNode Graphics { get; private set; }
 			public OperatingSystemNode OperatingSystem { get; private set; }
 			public WirelessTechnologyNode WirelessTechnology { get; private set; }
@@ -947,6 +948,7 @@ namespace AdvantageShoppingModels
 			public PriceNode Price { get; private set; }
 			public CustomizationNode Customization { get; private set; }
 			public DisplayNode Display { get; private set; }
+			public MemoryNode Memory { get; private set; }
 			public ProcessorNode Processor { get; private set; }
 			public ColorNode Color { get; private set; }
 		
@@ -1110,13 +1112,13 @@ namespace AdvantageShoppingModels
 			
 			}
 
-			public sealed class MemoryNode : WebElementNodeBase
+			public sealed class FilterTemplateExpandNode : WebElementNodeBase
 			{
 				#region Constructors
 			
-				public MemoryNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				public FilterTemplateExpandNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					DisplayName = @"MEMORY ";
+					DisplayName = @"Filter Template Expand";
 				}
 			
 				#endregion
@@ -1127,7 +1129,7 @@ namespace AdvantageShoppingModels
 				{
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
-						InnerText = @"MEMORY "
+						InnerText = As.RegExp(string.Empty)
 					};
 				}
 			
@@ -1303,6 +1305,31 @@ namespace AdvantageShoppingModels
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						InnerText = @"DISPLAY "
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class MemoryNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public MemoryNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"MEMORY ";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = @"MEMORY "
 					};
 				}
 			
