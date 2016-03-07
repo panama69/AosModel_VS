@@ -18,7 +18,7 @@ namespace Simple
         public void TestFixtureSetUp()
         {
             // Setup once per fixture
-            browser = BrowserFactory.Launch(BrowserType.InternetExplorer);
+            browser = BrowserFactory.Launch(BrowserType.Chrome);
             browser.Navigate("http://www.advantageonlineshopping.com/");
             aosModel = new AdvantageShoppingModels.AdvantageShoppingModel(browser);
 
@@ -81,37 +81,40 @@ namespace Simple
         [Test]
         public void Test()
         {
-            IBrowser browser = BrowserFactory.Launch(BrowserType.Chrome);
-            browser.Navigate("http://www.advantageonlineshopping.com/");
-            AdvantageShoppingModels.AdvantageShoppingModel aosModel = new AdvantageShoppingModels.AdvantageShoppingModel(browser);
-            aosModel.AdvantageShoppingPage.Laptops.Click();
-
-            IWebElement[] filterOptions = aosModel.FilterBy.FindChildren<IWebElement>
-                (aosModel.FilterBy.FilterOptions.Description);
-            IWebElement fo = null;
-            foreach (IWebElement filterOption in filterOptions){
-                Reporter.ReportEvent("Avail Filter: " + filterOption.InnerText, "");
-                fo = filterOption;
-            }
-            aosModel.FilterBy.FilterOptions.Description.InnerText = "COLOR";
-
-            IWebElement colorSection = aosModel.FilterBy.Describe<IWebElement>(aosModel.FilterBy.FilterOptions.Description);
-            colorSection.Click(); //expands
-
-
-            aosModel.FilterBy.FilterExpanded.Description.XPath = @"//LI[normalize-space()=""COLOR""]/DIV[1]";
-            IWebElement[] colorOptions = aosModel.FilterBy.FilterExpanded.FindChildren<IWebElement>
-                (aosModel.FilterBy.FilterColorPallet.Description);
-
-            Reporter.ReportEvent("Length:"+colorOptions.Length, "");
-            foreach (IWebElement colorOption in colorOptions)
+            browser.Describe<IWebElement>(new WebElementDescription
             {
-                Reporter.ReportEvent(colorOption.Title, 
-                    colorOption.InnerText+"<br>"+
-                    colorOption.OuterText+"<br>"+
-                    colorOption.InnerHTML+"<br>"+
-                    colorOption.OuterHTML+"<br>"+
-                    colorOption.Id+"<br>");
+                TagName = @"SPAN",
+                InnerText = @"TABLETS"
+            }).Click();
+
+            IWebElement memoryNode = browser.Describe<IWebElement>(new WebElementDescription
+            {
+                InnerText = @"MEMORY "
+            });
+            memoryNode.Click();
+
+            IWebElement memoryOptionsContainer = aosModel.FilterBy.FilterExpanded;
+                /*browser.Describe<IWebElement>(new WebElementDescription
+            {
+                ClassName = @"option",
+                TagName = @"DIV",
+                IsVisible = true
+            });*/
+
+            IWebElement[] memoryChildren = memoryOptionsContainer.FindChildren<ICheckBox>(aosModel.FilterBy.FilterCheckBox.Description);// (new CheckBoxDescription { TagName = "INPUT", Type = "checkbox" });
+            Reporter.ReportEvent("MemoryChildrenCount: " + memoryChildren.Length, "");
+            IWebElement[] memoryChildren2 = memoryOptionsContainer.FindChildren<IWebElement>(aosModel.FilterBy.FilterItemName.Description);// (new WebElementDescription { TagName = "SPAN", ClassName = "roboto-regular ng-binding" });
+            Reporter.ReportEvent("my count" + memoryChildren2.Length, "");
+            int i = 0;
+            foreach (IWebElement memoryChild in memoryChildren2)
+            {
+                Reporter.ReportEvent(memoryChild.InnerText, "");
+                if (memoryChild.InnerText.Equals("4 GB 1067 MHz LPDDR3 SDRAM"))
+                {
+                    memoryChildren[i].Click();
+                }
+                else
+                    i++;
             }
         }
 

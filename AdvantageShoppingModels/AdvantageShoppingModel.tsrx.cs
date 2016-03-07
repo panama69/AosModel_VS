@@ -44,6 +44,7 @@ namespace AdvantageShoppingModels
 			ShoppingCartPage = new ShoppingCartPageNode(contextTestObject, this);
 			LoginPopup = new LoginPopupNode(contextTestObject, this);
 			ModalLogin = new ModalLoginNode(contextTestObject, this);
+			UpdateCart = new UpdateCartNode(contextTestObject, this);
 			RebuildDescriptions();
 			
 		}
@@ -74,6 +75,7 @@ namespace AdvantageShoppingModels
 		public ShoppingCartPageNode ShoppingCartPage { get; private set; }
 		public LoginPopupNode LoginPopup { get; private set; }
 		public ModalLoginNode ModalLogin { get; private set; }
+		public UpdateCartNode UpdateCart { get; private set; }
 	
 		#endregion
 	
@@ -898,6 +900,9 @@ namespace AdvantageShoppingModels
 				FilterColorPallet = new FilterColorPalletNode(this, applicationModel);
 				FilterOptions = new FilterOptionsNode(this, applicationModel);
 				FilterExpanded = new FilterExpandedNode(this, applicationModel);
+				FilterCheckBox = new FilterCheckBoxNode(this, applicationModel);
+				FilterItemName = new FilterItemNameNode(this, applicationModel);
+				FilterCheckboxContainer = new FilterCheckboxContainerNode(this, applicationModel);
 				Memory = new MemoryNode(this, applicationModel);
 				Graphics = new GraphicsNode(this, applicationModel);
 				OperatingSystem = new OperatingSystemNode(this, applicationModel);
@@ -931,6 +936,9 @@ namespace AdvantageShoppingModels
 			public FilterColorPalletNode FilterColorPallet { get; private set; }
 			public FilterOptionsNode FilterOptions { get; private set; }
 			public FilterExpandedNode FilterExpanded { get; private set; }
+			public FilterCheckBoxNode FilterCheckBox { get; private set; }
+			public FilterItemNameNode FilterItemName { get; private set; }
+			public FilterCheckboxContainerNode FilterCheckboxContainer { get; private set; }
 			public MemoryNode Memory { get; private set; }
 			public GraphicsNode Graphics { get; private set; }
 			public OperatingSystemNode OperatingSystem { get; private set; }
@@ -1015,7 +1023,86 @@ namespace AdvantageShoppingModels
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						TagName = @"DIV",
-						ClassName = @"option"
+						ClassName = @"option",
+						IsVisible = true
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterCheckBoxNode : CheckBoxNodeBase
+			{
+				#region Constructors
+			
+				public FilterCheckBoxNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter Check Box";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.CheckBoxDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.CheckBoxDescription
+					{
+						Type = @"checkbox",
+						TagName = @"INPUT"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterItemNameNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterItemNameNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter Item Name";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						TagName = @"SPAN",
+						ClassName = @"roboto-regular ng-binding"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterCheckboxContainerNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterCheckboxContainerNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter Checkbox Container";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						ClassName = @"option",
+						OuterHTML = As.RegExp(@".*<input type=""checkbox"" ng-model=""item.selected"".*")
 					};
 				}
 			
@@ -2358,6 +2445,33 @@ namespace AdvantageShoppingModels
 				return new HP.LFT.SDK.Web.PageDescription
 				{
 					Url = As.RegExp(@"http://www.advantageonlineshopping.com/#/.*")
+				};
+			}
+		
+			#endregion
+		
+		}
+
+		public sealed class UpdateCartNode : ButtonNodeBase
+		{
+			#region Constructors
+		
+			public UpdateCartNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+			{
+				DisplayName = @" UPDATE CART ";
+			}
+		
+			#endregion
+		
+			#region Description
+		
+			protected override HP.LFT.SDK.Web.ButtonDescription CreateDescription()
+			{
+				return new HP.LFT.SDK.Web.ButtonDescription
+				{
+					ButtonType = @"submit",
+					TagName = @"BUTTON",
+					Name = @" UPDATE CART "
 				};
 			}
 		

@@ -375,9 +375,52 @@
             <properties>
               <property name="TagName" type="string">DIV</property>
               <property name="ClassName" type="string">option</property>
+              <property name="IsVisible" type="boolean">true</property>
             </properties>
           </identification>
           <tags>
+            <tag>Generic</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="CheckBox">
+          <name>Filter Check Box</name>
+          <codeName>FilterCheckBox</codeName>
+          <identification>
+            <properties>
+              <property name="Type" type="string">checkbox</property>
+              <property name="TagName" type="string">INPUT</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Generic</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Filter Item Name</name>
+          <codeName>FilterItemName</codeName>
+          <identification>
+            <properties>
+              <property name="TagName" type="string">SPAN</property>
+              <property name="ClassName" type="string">roboto-regular ng-binding</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>Generic</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Filter Checkbox Container</name>
+          <codeName>FilterCheckboxContainer</codeName>
+          <description>This is an example image of a checkbox container.  To use effectively, you must use the *.FindChildren if you wish to work with the individual items listed in the container</description>
+          <image>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</image>
+          <identification>
+            <properties>
+              <property name="ClassName" type="string">option</property>
+              <property name="OuterHTML" type="string" isRegExp="true">.*&lt;input type="checkbox" ng-model="item.selected".*</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
             <tag>Generic</tag>
           </tags>
         </object>
@@ -1024,6 +1067,17 @@
       <tags>
         <tag>LoginModal</tag>
       </tags>
+    </object>
+    <object technology="Web" type="Button">
+      <name> UPDATE CART </name>
+      <codeName>UpdateCart</codeName>
+      <identification>
+        <properties>
+          <property name="ButtonType" type="string">submit</property>
+          <property name="TagName" type="string">BUTTON</property>
+          <property name="Name" type="string"> UPDATE CART </property>
+        </properties>
+      </identification>
     </object>
   </objects>
 </applicationModel>
