@@ -347,6 +347,7 @@
             <properties>
               <property name="ClassName" type="string">productColor </property>
               <property name="TagName" type="string">A</property>
+              <property name="IsVisible" type="boolean">true</property>
             </properties>
           </identification>
           <tags>
@@ -366,6 +367,56 @@
           <tags>
             <tag>Generic</tag>
           </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Slider</name>
+          <codeName>Slider</codeName>
+          <identification>
+            <properties>
+              <property name="TagName" type="string">DIV</property>
+              <property name="Id" type="string">slider</property>
+              <property name="IsVisible" type="boolean">true</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+          </tags>
+          <children>
+            <object technology="Web" type="WebElement">
+              <name>SliderBar</name>
+              <codeName>SliderBar</codeName>
+              <identification>
+                <properties>
+                  <property name="TagName" type="string">DIV</property>
+                  <property name="ClassName" type="string">noUI-base</property>
+                  <property name="IsVisible" type="boolean">true</property>
+                </properties>
+              </identification>
+              <tags>
+                <tag>SearchFilters</tag>
+              </tags>
+            </object>
+          </children>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Slider Step Left</name>
+          <codeName>SliderStepLeft</codeName>
+          <identification>
+            <properties>
+              <property name="TagName" type="string">P</property>
+              <property name="ClassName" type="string">sliderSteps left ng-binding</property>
+            </properties>
+          </identification>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Slider Step Right</name>
+          <codeName>SliderStepRight</codeName>
+          <identification>
+            <properties>
+              <property name="TagName" type="string">P</property>
+              <property name="ClassName" type="string">sliderSteps  ng-binding</property>
+            </properties>
+          </identification>
         </object>
         <object technology="Web" type="WebElement">
           <name>Filter Expanded</name>
@@ -425,8 +476,11 @@
           </tags>
         </object>
         <object technology="Web" type="WebElement">
-          <name>Filter Template Expand</name>
-          <codeName>FilterTemplateExpand</codeName>
+          <name>Filter By Expand Template</name>
+          <codeName>FilterByExpandTemplate</codeName>
+          <description>To use this test object you need to set the InnterText value in your code.
+Ex:
+aosModel.FilterBy.FilterTemplateExpand.InnerText = "PRICE.*"</description>
           <identification>
             <properties>
               <property name="InnerText" type="string" isRegExp="true" />
@@ -434,6 +488,41 @@
           </identification>
           <tags>
             <tag>SearchFilters</tag>
+            <tag>FilterByExpandCollapse</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Filter By Expand</name>
+          <codeName>FilterByExpand</codeName>
+          <description>To use this test object you need to set the InnterText value in your code.
+Ex:
+aosModel.FilterBy.FilterTemplateExpand.InnerText = "PRICE.*"</description>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string" isRegExp="true" />
+              <property name="ClassName" type="string">accordion roboto-regular arrowDown ng-binding</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+            <tag>FilterByExpandCollapse</tag>
+          </tags>
+        </object>
+        <object technology="Web" type="WebElement">
+          <name>Filter By Collapse</name>
+          <codeName>FilterByCollapse</codeName>
+          <description>To use this test object you need to set the InnterText value in your code.
+Ex:
+aosModel.FilterBy.FilterTemplateExpand.InnerText = "PRICE.*"</description>
+          <identification>
+            <properties>
+              <property name="InnerText" type="string" isRegExp="true" />
+              <property name="ClassName" type="string">accordion roboto-regular arrowDown ng-binding arrowUp</property>
+            </properties>
+          </identification>
+          <tags>
+            <tag>SearchFilters</tag>
+            <tag>FilterByExpandCollapse</tag>
           </tags>
         </object>
         <object technology="Web" type="WebElement">
@@ -663,7 +752,7 @@
       <description>This is the table to the right of the filters(which are on the left) which is used to display products for purchase</description>
       <identification>
         <properties>
-          <property name="TagName" type="string">div</property>
+          <property name="TagName" type="string">DIV</property>
           <property name="ClassName" type="string">cell categoryRight</property>
         </properties>
       </identification>

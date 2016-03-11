@@ -899,11 +899,16 @@ namespace AdvantageShoppingModels
 			{
 				FilterColorPallet = new FilterColorPalletNode(this, applicationModel);
 				FilterOptions = new FilterOptionsNode(this, applicationModel);
+				Slider = new SliderNode(this, applicationModel);
+				SliderStepLeft = new SliderStepLeftNode(this, applicationModel);
+				SliderStepRight = new SliderStepRightNode(this, applicationModel);
 				FilterExpanded = new FilterExpandedNode(this, applicationModel);
 				FilterCheckBox = new FilterCheckBoxNode(this, applicationModel);
 				FilterItemName = new FilterItemNameNode(this, applicationModel);
 				FilterCheckboxContainer = new FilterCheckboxContainerNode(this, applicationModel);
-				FilterTemplateExpand = new FilterTemplateExpandNode(this, applicationModel);
+				FilterByExpandTemplate = new FilterByExpandTemplateNode(this, applicationModel);
+				FilterByExpand = new FilterByExpandNode(this, applicationModel);
+				FilterByCollapse = new FilterByCollapseNode(this, applicationModel);
 				Graphics = new GraphicsNode(this, applicationModel);
 				OperatingSystem = new OperatingSystemNode(this, applicationModel);
 				WirelessTechnology = new WirelessTechnologyNode(this, applicationModel);
@@ -936,11 +941,16 @@ namespace AdvantageShoppingModels
 		
 			public FilterColorPalletNode FilterColorPallet { get; private set; }
 			public FilterOptionsNode FilterOptions { get; private set; }
+			public SliderNode Slider { get; private set; }
+			public SliderStepLeftNode SliderStepLeft { get; private set; }
+			public SliderStepRightNode SliderStepRight { get; private set; }
 			public FilterExpandedNode FilterExpanded { get; private set; }
 			public FilterCheckBoxNode FilterCheckBox { get; private set; }
 			public FilterItemNameNode FilterItemName { get; private set; }
 			public FilterCheckboxContainerNode FilterCheckboxContainer { get; private set; }
-			public FilterTemplateExpandNode FilterTemplateExpand { get; private set; }
+			public FilterByExpandTemplateNode FilterByExpandTemplate { get; private set; }
+			public FilterByExpandNode FilterByExpand { get; private set; }
+			public FilterByCollapseNode FilterByCollapse { get; private set; }
 			public GraphicsNode Graphics { get; private set; }
 			public OperatingSystemNode OperatingSystem { get; private set; }
 			public WirelessTechnologyNode WirelessTechnology { get; private set; }
@@ -974,7 +984,8 @@ namespace AdvantageShoppingModels
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						ClassName = @"productColor ",
-						TagName = @"A"
+						TagName = @"A",
+						IsVisible = true
 					};
 				}
 			
@@ -1000,6 +1011,122 @@ namespace AdvantageShoppingModels
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						ClassName = As.RegExp(@"accordion roboto-regular arrowDown ng-binding.*")
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class SliderNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public SliderNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					SliderBar = new SliderBarNode(this, applicationModel);
+					DisplayName = @"Slider";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						TagName = @"DIV",
+						Id = @"slider",
+						IsVisible = true
+					};
+				}
+			
+				#endregion
+			
+				#region Test Objects
+			
+				public SliderBarNode SliderBar { get; private set; }
+			
+				#endregion
+			
+				#region Inner Classes
+			
+				public sealed class SliderBarNode : WebElementNodeBase
+				{
+					#region Constructors
+				
+					public SliderBarNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+					{
+						DisplayName = @"SliderBar";
+					}
+				
+					#endregion
+				
+					#region Description
+				
+					protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+					{
+						return new HP.LFT.SDK.Web.WebElementDescription
+						{
+							TagName = @"DIV",
+							ClassName = @"noUI-base",
+							IsVisible = true
+						};
+					}
+				
+					#endregion
+				
+				}
+
+				#endregion
+			}
+
+			public sealed class SliderStepLeftNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public SliderStepLeftNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Slider Step Left";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						TagName = @"P",
+						ClassName = @"sliderSteps left ng-binding"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class SliderStepRightNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public SliderStepRightNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Slider Step Right";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						TagName = @"P",
+						ClassName = @"sliderSteps  ng-binding"
 					};
 				}
 			
@@ -1112,13 +1239,13 @@ namespace AdvantageShoppingModels
 			
 			}
 
-			public sealed class FilterTemplateExpandNode : WebElementNodeBase
+			public sealed class FilterByExpandTemplateNode : WebElementNodeBase
 			{
 				#region Constructors
 			
-				public FilterTemplateExpandNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				public FilterByExpandTemplateNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
-					DisplayName = @"Filter Template Expand";
+					DisplayName = @"Filter By Expand Template";
 				}
 			
 				#endregion
@@ -1130,6 +1257,58 @@ namespace AdvantageShoppingModels
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						InnerText = As.RegExp(string.Empty)
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterByExpandNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterByExpandNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter By Expand";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = As.RegExp(string.Empty),
+						ClassName = @"accordion roboto-regular arrowDown ng-binding"
+					};
+				}
+			
+				#endregion
+			
+			}
+
+			public sealed class FilterByCollapseNode : WebElementNodeBase
+			{
+				#region Constructors
+			
+				public FilterByCollapseNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+				{
+					DisplayName = @"Filter By Collapse";
+				}
+			
+				#endregion
+			
+				#region Description
+			
+				protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+				{
+					return new HP.LFT.SDK.Web.WebElementDescription
+					{
+						InnerText = As.RegExp(string.Empty),
+						ClassName = @"accordion roboto-regular arrowDown ng-binding arrowUp"
 					};
 				}
 			
@@ -1615,7 +1794,7 @@ namespace AdvantageShoppingModels
 			{
 				return new HP.LFT.SDK.Web.WebElementDescription
 				{
-					TagName = @"div",
+					TagName = @"DIV",
 					ClassName = @"cell categoryRight"
 				};
 			}
