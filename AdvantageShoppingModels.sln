@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantageShoppingModels", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Simple\Simple.csproj", "{43CF575D-6BCC-4B9E-B5AF-F9A19F69E56D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvantageCommonFunctions", "AdvantageCommonFunctions\AdvantageCommonFunctions.csproj", "{435F5576-263C-4103-8D5F-23AA0D816CB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{43CF575D-6BCC-4B9E-B5AF-F9A19F69E56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43CF575D-6BCC-4B9E-B5AF-F9A19F69E56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43CF575D-6BCC-4B9E-B5AF-F9A19F69E56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435F5576-263C-4103-8D5F-23AA0D816CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435F5576-263C-4103-8D5F-23AA0D816CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435F5576-263C-4103-8D5F-23AA0D816CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435F5576-263C-4103-8D5F-23AA0D816CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
