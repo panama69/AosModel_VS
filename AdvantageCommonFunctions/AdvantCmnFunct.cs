@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,30 +42,44 @@ namespace AdvantageCommonFunctions
         //
         // History:                 Verison 1 - Initial Release.
         //*********************************************************************************************************
+        private AdvantageShoppingModel MyVantModel;
+        private IBrowser browser;
+        private bool facebookLogin;
+        private string userName;
+        private string password;
+        private string email;
 
-        public bool LoginToSite(IBrowser objCurrBrowserWin, Boolean FacebookLogin, string strUsername, string strPassword, string strEmail)
+        public AdvantCmnFuncts(IBrowser objCurrBrowserWin, Boolean facebookLogin, string strUsername, string strPassword, string strEmail)
         {
+            this.browser = objCurrBrowserWin;
+            this.facebookLogin = facebookLogin;
+            this.userName = strUsername;
+            this.password = strPassword;
+            this.email = strEmail;
 
             // Create a new instance of the Application Model
 
-            AdvantageShoppingModel MyVantModel = new AdvantageShoppingModel(objCurrBrowserWin);
+            MyVantModel = new AdvantageShoppingModel(browser);
+        }
+        public bool LoginToSite()
+        {
 
             // Check to see if the login popup window is visable.  If so, use the pop-up to login.
 
             if (MyVantModel.LoginPopup.LoginPopupSignInButton.IsVisible)
             {
-                MyVantModel.LoginPopup.LoginPopupUsername.SetValue(strUsername);
-                MyVantModel.LoginPopup.LoginPopupPassword.SetSecure(strPassword);
-                MyVantModel.LoginPopup.LoginPopupEmail.SetValue(strEmail);
+                MyVantModel.LoginPopup.LoginPopupUsername.SetValue(userName);
+                MyVantModel.LoginPopup.LoginPopupPassword.SetSecure(password);
+                MyVantModel.LoginPopup.LoginPopupEmail.SetValue(email);
                 MyVantModel.LoginPopup.LoginPopupSignInButton.Click();
             }
             else
             {
                 // We aren't on the pop-up window, therefore we must be on the order payment page.
 
-                MyVantModel.OrderPayment.Username.SetValue(strUsername);
-                MyVantModel.OrderPayment.Password.SetSecure(strPassword);
-                MyVantModel.OrderPayment.Email.SetValue(strEmail);
+                MyVantModel.OrderPayment.Username.SetValue(userName);
+                MyVantModel.OrderPayment.Password.SetSecure(password);
+                MyVantModel.OrderPayment.Email.SetValue(email);
                 MyVantModel.OrderPayment.Login.Click();
             }
 
@@ -75,6 +90,21 @@ namespace AdvantageCommonFunctions
                 return false;
             else
                 return true;
+        }
+
+        public bool LogoffFromSite()
+        {
+            MyVantModel.Header.Click();
+            //move the mouse over to trigger the logout option
+            Mouse.Move(new Point(
+                MyVantModel.Header.AbsoluteLocation.X+(MyVantModel.Header.AbsoluteLocation.X/2), 
+                MyVantModel.Header.MyAccountSignOut.AbsoluteLocation.Y-(MyVantModel.Header.AbsoluteLocation.Y/2)));
+            MyVantModel.Header.MyAccountSignOut.SignOut.Click();
+
+
+            // check to see if the user name is still showing on the login button
+            // if it is then the logout fail (false) if it doesn't then successful (true)
+            return !MyVantModel.Header.MyAccountSignOut.InnerText.Contains(this.userName);
         }
     }
 }

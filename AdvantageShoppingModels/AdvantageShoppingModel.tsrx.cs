@@ -766,6 +766,7 @@ namespace AdvantageShoppingModels
 			
 				public MyAccountSignOutNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
 				{
+					SignOut = new SignOutNode(this, applicationModel);
 					DisplayName = @"My account Sign out ";
 				}
 			
@@ -778,12 +779,48 @@ namespace AdvantageShoppingModels
 					return new HP.LFT.SDK.Web.WebElementDescription
 					{
 						TagName = @"A",
-						InnerText = @"My account Sign out "
+						InnerText = As.RegExp(@".*My account Sign out ")
 					};
 				}
 			
 				#endregion
 			
+				#region Test Objects
+			
+				public SignOutNode SignOut { get; private set; }
+			
+				#endregion
+			
+				#region Inner Classes
+			
+				public sealed class SignOutNode : WebElementNodeBase
+				{
+					#region Constructors
+				
+					public SignOutNode(ITestObject parent, AppModelBase applicationModel) : base(parent, applicationModel)
+					{
+						DisplayName = @"Sign Out";
+					}
+				
+					#endregion
+				
+					#region Description
+				
+					protected override HP.LFT.SDK.Web.WebElementDescription CreateDescription()
+					{
+						return new HP.LFT.SDK.Web.WebElementDescription
+						{
+							TagName = @"LABEL",
+							ClassName = @"option roboto-medium ng-scope",
+							InnerText = @"Sign Out"
+						};
+					}
+				
+					#endregion
+				
+				}
+
+				#endregion
 			}
 
 			public sealed class SearchNode : WebElementNodeBase

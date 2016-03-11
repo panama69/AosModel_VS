@@ -256,12 +256,29 @@
           <identification>
             <properties>
               <property name="TagName" type="string">A</property>
-              <property name="InnerText" type="string">My account Sign out </property>
+              <property name="InnerText" type="string" isRegExp="true">.*My account Sign out </property>
             </properties>
           </identification>
           <tags>
             <tag>CommonAllPages</tag>
           </tags>
+          <children>
+            <object technology="Web" type="WebElement">
+              <name>Sign Out</name>
+              <codeName>SignOut</codeName>
+              <description>This can only be called once you hover over the My</description>
+              <identification>
+                <properties>
+                  <property name="TagName" type="string">LABEL</property>
+                  <property name="ClassName" type="string">option roboto-medium ng-scope</property>
+                  <property name="InnerText" type="string">Sign Out</property>
+                </properties>
+              </identification>
+              <tags>
+                <tag>CommonAllPages</tag>
+              </tags>
+            </object>
+          </children>
         </object>
         <object technology="Web" type="WebElement">
           <name>WebElement</name>
