@@ -11,37 +11,33 @@ using AdvantageShoppingModels;
 
 namespace AdvantageCommonFunctions
 {
+    //*********************************************************************************************************
+    // Class Name:           AdvantCmnFuncts
+    //
+    // Function Description:    Provides a common set of actions/functions for login on and off the site.
+    //                          There is only one constructory taking the below argements.
+    //
+    // Input Parameters:        Name                Type                Description
+    //
+    //                          objCurrBrowserWin   object              Current browser window object
+    //                          FacebookLogin       boolean             use the Facebook login in Popup? (currently diabled)
+    //                          strUsername         string              Login Username
+    //                          strPassword         string              Login Password (encoded)
+    //                          strEmail            string              Login Email
+    //
+    // Example use:             AdvantCmnFuncts LoginInstance new AdvantCmnFuncts(browser, false, "MyUsername","MyPassword", "MyEmail");
+    //                          bolLoggedIn = LoginInstance.LoginToSite();
+    //                          bolLoggedOff = LoginInstance.LogoffFromSite();
+    //
+    // Date:                    March 11th 2016
+    //
+    // Author:                  Dave Flynn
+    //
+    // History:                 Verison 1 - Initial Release.  This was modified from the original to encapsulate the data
+    //                                      and pull the methods/functions together.
+    //*********************************************************************************************************
     public class AdvantCmnFuncts
     {
-        //*********************************************************************************************************
-        // Function Name:           LoginToSite
-        //
-        // Function Description:    Provides a common Login utility.  Logs into site used passed in credentials.  
-        //                          Can be used to log in via log in pop up or checkout screen.  Utility should
-        //                          detect if popup is visable - if so, it will login using popup.  If not, will
-        //                          assume checkout login screen.
-        //
-        // Input Parameters:        Name                Type                Description
-        //
-        //                          objCurrBrowserWin   object              Current browser window object
-        //                          FacebookLogin       boolean             use the Facebook login in Popup? (currently diabled)
-        //                          strUsername         string              Login Username
-        //                          strPassword         string              Login Password (encoded)
-        //                          strEmail            string              Login Email
-        //
-        // Return:
-        //                                              boolean             True = Login successful, False = Login Unsuccessful
-        //
-        //
-        // Example use:                                 var LoginInstance new AdvantCmnFuncts
-        //                                              bolLoggedIn = LoginInstance.LoginToSite(browser, false, "MyUsername","MyPassword", "MyEmail");
-        //
-        // Date:                    March 11th 2016
-        //
-        // Author:                  Will Zuill
-        //
-        // History:                 Verison 1 - Initial Release.
-        //*********************************************************************************************************
         private AdvantageShoppingModel MyVantModel;
         private IBrowser browser;
         private bool facebookLogin;
@@ -61,6 +57,27 @@ namespace AdvantageCommonFunctions
 
             MyVantModel = new AdvantageShoppingModel(browser);
         }
+        //*********************************************************************************************************
+        // Function Name:           LoginToSite
+        //
+        // Function Description:    Provides a common Login utility.  Logs into site used passed in credentials.  
+        //                          Can be used to log in via log in pop up or checkout screen.  Utility should
+        //                          detect if popup is visable - if so, it will login using popup.  If not, will
+        //                          assume checkout login screen.
+        //
+        // Return:
+        //                                              boolean             True = Login successful, False = Login Unsuccessful
+        //
+        //
+        // Example use:                                 AdvantCmnFuncts LoginInstance new AdvantCmnFuncts(browser, false, "MyUsername","MyPassword", "MyEmail");
+        //                                              bolLoggedIn = LoginInstance.LoginToSite();
+        //
+        // Date:                    March 11th 2016
+        //
+        // Author:                  Will Zuill
+        //
+        // History:                 Verison 1 - Initial Release.
+        //*********************************************************************************************************
         public bool LoginToSite()
         {
 
@@ -92,6 +109,24 @@ namespace AdvantageCommonFunctions
                 return true;
         }
 
+        //*********************************************************************************************************
+        // Function Name:           LogoffFromSite
+        //
+        // Function Description:    Provides a common LogOff utility.  Logs off site.
+        //
+        // Return:
+        //                                              boolean             True = Logoff successful, False = Logoff Unsuccessful
+        //
+        // Example use:                                 AdvantCmnFuncts LoginInstance new AdvantCmnFuncts(browser, false, "MyUsername","MyPassword", "MyEmail");
+        //                                              bolLoggedIn = LoginInstance.LoginToSite();
+        //                                              bolLoggedOff = LoginInstance.LogoffFromSite();
+        //
+        // Date:                    March 11th 2016
+        //
+        // Author:                  DaveFlynn
+        //
+        // History:                 Verison 1 - Initial Release.
+        //*********************************************************************************************************
         public bool LogoffFromSite()
         {
             MyVantModel.Header.Click();
